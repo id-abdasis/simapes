@@ -9,27 +9,21 @@
     <h2 class="content-heading">Tambah Santri</h2>
     <div class="row">
         <div class="col-md-8">
-            <div class="block">
+            <div class="js-wizard-validation-classic block">
                 <ul class="nav nav-tabs nav-tabs-block nav-fill" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#wizard-validation-classic-step1" data-toggle="tab">1. Data Santri</a>
+                        <a class="nav-link active" href="#data-santri" data-toggle="tab">1. DATA SANTRI</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-validation-classic-step2" data-toggle="tab">2. Data Orang Tua</a>
+                        <a class="nav-link" href="#data-ortu" data-toggle="tab">2. DATA ORANG TUA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-validation-classic-step3" data-toggle="tab">3. Data Wali</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#wizard-validation-classic-step3" data-toggle="tab">4. Kesehatan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#wizard-validation-classic-step3" data-toggle="tab">5. Lampiran</a>
+                        <a class="nav-link" href="#data-wali" data-toggle="tab">3. DATA WALI</a>
                     </li>
                 </ul>
                 <form class="js-wizard-validation-classic-form" action="#" method="post" novalidate="validate">
                     <div class="block-content block-content-full tab-content" style="min-height: 265px;">
-                        <div class="tab-pane active" id="wizard-validation-classic-step1" role="tabpanel">
+                        <div class="tab-pane active" id="data-santri" role="tabpanel">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="nama-lengkap-santri">Nama Lengkap</label>
@@ -211,8 +205,8 @@
                         </div>
 
                         {{-- Form Orang Tua --}}
-                        <div class="tab-pane" id="wizard-validation-classic-step2" role="tabpanel">
-                            <h5>Data Ayah</h5>
+                        <div class="tab-pane" id="data-ortu" role="tabpanel">
+                            <h5>DATA AYAH</h5>
                             <div class="form-group">
                                 <label for="nama-ayah">Nama Ayah</label>
                                 <input type="text" class="form-control" id="nama-ayah" name="nama-ayah" required placeholder="Masukan Nama Ayah">
@@ -232,42 +226,394 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="pekerjaan-ayah">Pendidikan Ayah</label>
+                                        <input type="text" class="form-control" id="pendidikan-ayah" name="pendidikan-ayah" placeholder="Pendidikan Terahir Ayah" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="pekerjaan-ayah">Pekerjaan Ayah</label>
+                                        <input type="text" class="form-control" id="pekerjaan-ayah" name="pekerjaan-ayah" placeholder="Pendidikan Terahir Ayah" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="penghasilan-ayah">Penghasilan Ayah</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    Rp
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" id="penghasilan-ayah" name="penghasilan-ayah" placeholder="Penghasilan">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">/bulan</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="telepon-ayah">No. Telepon Ayah</label>
+                                        <input type="text" class="form-control" id="telepon-ayah" name="telepon-ayah" placeholder="Masukan Telepon Ayah" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email-ayah">Email Ayah</label>
+                                        <input type="email" id="email-ayah" class="form-control" name="email-ayah" placeholder="Masukan Email Ayah" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="keterangan-ayah">Keterangan</label>
+                                        <select class="form-control" id="keterangan-ayah" required name="keterangan-ayah">
+                                            <option value="">Pilih Keterangan</option>
+                                            <option value="Masih Hidup">Masih Hidup</option>
+                                            <option value="Meninggal">Meninggal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <h5 class="mt-3">DATA IBU</h5>
+                            <div class="form-group">
+                                <label for="nama-ibu">Nama Ibu</label>
+                                <input type="text" class="form-control" id="nama-ibu" name="nama-ibu" required placeholder="Masukan Nama Ibu">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tempat-lahir-ibu">Tempat Lahir</label>
+                                        <input type="text" class="form-control" id="tempat-lahir-ibu" name="tempat-lahir-ibu" required placeholder="Tempat Lahir Ibu">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tanggal-lahir-ibu">Tanggal Lahir Ibu</label>
+                                        <input required type="text" class="js-flatpickr form-control bg-white" id="tanggal-lahir-ibu" name="tanggal-lahir-ibu" placeholder="Pilih Tanggal Lahir" data-date-format="d-m-Y">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="pekerjaan-ibu">Pendidikan Ibu</label>
+                                        <input type="text" class="form-control" id="pendidikan-ibu" name="pendidikan-ibu" placeholder="Pendidikan Terahir ibu" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="pekerjaan-ibu">Pekerjaan Ibu</label>
+                                        <input type="text" class="form-control" id="pekerjaan-ibu" name="pekerjaan-ibu" placeholder="Pendidikan Terahir Ibu" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="penghasilan-ibu">Penghasilan Ibu</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    Rp
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" id="penghasilan-ibu" name="penghasilan-ibu" placeholder="Penghasilan">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">/bulan</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="telepon-ibu">No. Telepon Ibu</label>
+                                        <input type="text" class="form-control" id="telepon-ibu" name="telepon-ibu" placeholder="Masukan Telepon Ibu" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email-ibu">Email Ibu</label>
+                                        <input type="email" id="email-ibu" class="form-control" name="email-ibu" placeholder="Masukan Email Ibu" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="keterangan-ibu">Keterangan</label>
+                                        <select class="form-control" id="keterangan-ibu" required name="keterangan-ibu">
+                                            <option value="">Pilih Keterangan</option>
+                                            <option value="Masih Hidup">Masih Hidup</option>
+                                            <option value="Meninggal">Meninggal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5 class="mt-3">ALAMAT ORANG TUA</h5>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="provinsi-ortu">Provinsi Orang Tua</label>
+                                        <select class="form-control" id="provinsi-ortu" name="provinsi-ortu">
+                                            <option value="">Pilih Provinsi</option>
+                                            <option value="SD">SD</option>
+                                            <option value="MD">MD</option>
+                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="kabupaten-ortu">Kabupaten Orang Tua</label>
+                                        <select class="form-control" id="kabupaten-ortu" name="kabupaten-ortu">
+                                            <option value="">Pilih Kabupaten</option>
+                                            <option value="SD">SD</option>
+                                            <option value="MD">MD</option>
+                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="kecamatan-ortu">Kecamatan Orang Tua</label>
+                                        <select class="form-control" id="kecamatan-ortu" name="kecamatan-ortu">
+                                            <option value="">Pilih Kecamatan</option>
+                                            <option value="SD">SD</option>
+                                            <option value="MD">MD</option>
+                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="kelurahan-ortu">Desa Orang Tua</label>
+                                        <input type="text" class="form-control" id="kelurahan-ortu" name="kelurahan-ortu">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="kelurahan-ortu">Dusun Orang Tua</label>
+                                        <input type="text" class="form-control" id="kelurahan-ortu" name="kelurahan-ortu">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="rt-ortu">RT Orang Tua</label>
+                                        <input type="text" class="form-control" id="rt-ortu" name="rt-ortu">
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="rw-ortu">RW Orang Tua</label>
+                                        <input type="text" class="form-control" id="rw-ortu" name="rw-ortu">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="alamat-jalan">Alamat Jalan</label>
+                                <textarea required class="form-control" id="alamat-jalan" name="alamat-jalan" rows="6" placeholder="Masukan Alamat Sesuai Di KTP"></textarea>
+                            </div>
                         </div>
 
-                        {{-- Form Data Wali --}}
-                        <div class="tab-pane" id="wizard-validation-classic-step3" role="tabpanel">
+                        {{-- Form Data wali --}}
+                        <div class="tab-pane" id="data-wali" role="tabpanel">
+                            <h5 class="mt-3">DATA WALI</h5>
                             <div class="form-group">
-                                <label for="wizard-validation-classic-location">Location</label>
-                                <input class="form-control" type="text" id="wizard-validation-classic-location" name="wizard-validation-classic-location">
+                                <label for="nama-wali">Nama Wali</label>
+                                <input type="text" class="form-control" id="nama-wali" name="nama-wali" required placeholder="Masukan Nama wali">
                             </div>
-                            <div class="form-group">
-                                <label for="wizard-validation-classic-skills">Skills</label>
-                                <select class="form-control" id="wizard-validation-classic-skills" name="wizard-validation-classic-skills" size="1">
-                                    <option value="">Please select your best skill</option>
-                                    <option value="1">Photoshop</option>
-                                    <option value="2">HTML</option>
-                                    <option value="3">CSS</option>
-                                    <option value="4">JavaScript</option>
-                                </select>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tempat-lahir-wali">Tempat Lahir</label>
+                                        <input type="text" class="form-control" id="tempat-lahir-wali" name="tempat-lahir-wali" required placeholder="Tempat Lahir wali">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tanggal-lahir-wali">Tanggal Lahir Wali</label>
+                                        <input required type="text" class="js-flatpickr form-control bg-white" id="tanggal-lahir-wali" name="tanggal-lahir-wali" placeholder="Pilih Tanggal Lahir" data-date-format="d-m-Y">
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="pekerjaan-wali">Pendidikan Wali</label>
+                                        <input type="text" class="form-control" id="pendidikan-wali" name="pendidikan-wali" placeholder="Pendidikan Terahir wali" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="pekerjaan-wali">Pekerjaan Wali</label>
+                                        <input type="text" class="form-control" id="pekerjaan-wali" name="pekerjaan-wali" placeholder="Pendidikan Terahir wali" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="penghasilan-wali">Penghasilan Wali</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    Rp
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" id="penghasilan-wali" name="penghasilan-wali" placeholder="Penghasilan">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">/bulan</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="telepon-wali">No. Telepon Wali</label>
+                                        <input type="text" class="form-control" id="telepon-wali" name="telepon-wali" placeholder="Masukan Telepon wali" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email-wali">Email Wali</label>
+                                        <input type="email" id="email-wali" class="form-control" name="email-wali" placeholder="Masukan Email wali" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="keterangan-wali">Keterangan</label>
+                                        <select class="form-control" id="keterangan-wali" required name="keterangan-wali">
+                                            <option value="">Pilih Keterangan</option>
+                                            <option value="Masih Hidup">Masih Hidup</option>
+                                            <option value="Meninggal">Meninggal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5 class="mt-3">ALAMAT WALI</h5>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="provinsi-wali">Wali</label>
+                                        <select class="form-control" id="provinsi-wali" name="provinsi-wali">
+                                            <option value="">Pilih Provinsi</option>
+                                            <option value="SD">SD</option>
+                                            <option value="MD">MD</option>
+                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="kabupaten-wali">Kabupaten Wali</label>
+                                        <select class="form-control" id="kabupaten-wali" name="kabupaten-wali">
+                                            <option value="">Pilih Kabupaten</option>
+                                            <option value="SD">SD</option>
+                                            <option value="MD">MD</option>
+                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="kecamatan-wali">Kecamatan Wali</label>
+                                        <select class="form-control" id="kecamatan-wali" name="kecamatan-wali">
+                                            <option value="">Pilih Kecamatan</option>
+                                            <option value="SD">SD</option>
+                                            <option value="MD">MD</option>
+                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="kelurahan-wali">Desa Wali</label>
+                                        <input type="text" class="form-control" id="kelurahan-wali" name="kelurahan-wali">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="kelurahan-wali">Dusun Wali</label>
+                                        <input type="text" class="form-control" id="kelurahan-wali" name="kelurahan-wali">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="rt-wali">RT Wali</label>
+                                        <input type="text" class="form-control" id="rt-wali" name="rt-wali">
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="rw-wali">RW Wali</label>
+                                        <input type="text" class="form-control" id="rw-wali" name="rw-wali">
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group">
-                                <label class="css-control css-control-primary css-switch" for="wizard-validation-classic-terms">
-                                    <input type="checkbox" class="css-control-input" id="wizard-validation-classic-terms" name="wizard-validation-classic-terms">
-                                    <span class="css-control-indicator"></span> Agree with the terms
-                                </label>
+                                <label for="alamat-jalan">Alamat Jalan</label>
+                                <textarea required class="form-control" id="alamat-jalan" name="alamat-jalan" rows="6" placeholder="Masukan Alamat Sesuai Di KTP"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="block-content block-content-sm block-content-full bg-body-light">
-                        <div class="row">
+                    <div class="block-content block-content-sm  block-content-full bg-body-light">
+                        <div class="row m-3">
                             <div class="col-6">
-                                <button type="button" class="btn btn-alt-secondary disabled" data-wizard="prev">
-                                    <i class="fa fa-angle-left mr-5"></i> Previous
+                                <button type="button" class="btn btn-alt-primary min-width-125 js-click-ripple-enabled" data-toggle="click-ripple" data-wizard="prev">
+                                    <i class="fa fa-angle-left mr-5"></i> Sebelumnya
                                 </button>
                             </div>
                             <div class="col-6 text-right">
-                                <button type="button" class="btn btn-alt-secondary" data-wizard="next">
-                                    Next <i class="fa fa-angle-right ml-5"></i>
+                                <button type="button" class="btn btn-alt-primary min-width-125 js-click-ripple-enabled" data-toggle="click-ripple" data-wizard="next">
+                                    Selanjutnya <i class="fa fa-angle-right ml-5"></i>
                                 </button>
                                 <button type="submit" class="btn btn-alt-primary d-none" data-wizard="finish">
                                     <i class="fa fa-check mr-5"></i> Submit
