@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('layouts.app');
 });
+
+
+Route::group(['prefix' => 'santri'], function () {
+    Route::get('/tambah-santri', 'SantriController@tambah_santri')->name('tambah-santri');
+});
