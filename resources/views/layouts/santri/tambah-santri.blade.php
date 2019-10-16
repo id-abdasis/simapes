@@ -3,6 +3,10 @@
 @section('plugin-css')
 <link rel="stylesheet" href="{{ url('/') }}/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
 <link rel="stylesheet" href="{{ url('/') }}/assets/js/plugins/flatpickr/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js"></script>
 @endsection
 
 @section('main-content')
@@ -28,7 +32,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="nama-lengkap-santri">Nama Lengkap</label>
-                                    <input required type="text" class="form-control" id="nama-lengkap-santri" name="nama-lengkap-santri" placeholder="Masukan Nama Lengkap">    
+                                    <input maxlength="10" required type="text" class="form-control isMaxLength" id="nama-lengkap-santri" name="nama-lengkap-santri" placeholder="Masukan Nama Lengkap">    
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="nama-panggilan-santri">Nama Panggilan</label>
@@ -557,7 +561,9 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="kelurahan-wali">Desa Wali</label>
-                                        <input type="text" class="form-control" id="kelurahan-wali" name="kelurahan-wali">
+                                        <select class="form-control" id="kelurahan-wali" name="kelurahan-wali">
+                                            <option value="">Pilih Kecamatan</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -641,9 +647,21 @@
 <script src="{{ url('/') }}/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <script src="{{ url('/') }}/assets/js/plugins/flatpickr/flatpickr.min.js"></script>
 <script src="{{ url('/') }}/assets/js/creative.js"></script>
+<script src="{{ url('/') }}/assets/js/bootstrap-maxlength.js"></script>
 <script>
     jQuery(function(){
         Codebase.helpers('datepicker');
+    });
+
+    $('.isMaxLength').maxlength({
+        alwaysShow: true,
+        threshold: 10,
+        warningClass: "label label-success",
+        limitReachedClass: "label label-warning",
+        placement: 'bottom',
+        preText: 'digunakan  ',
+        separator: ' dara ',
+        postText: ' karakter.'
     });
 </script>
 
