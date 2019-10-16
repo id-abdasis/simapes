@@ -73,7 +73,7 @@
         <div class="content-side content-side-full">
             <ul class="nav-main">
                 <li>
-                    <a class="active" href="be_pages_dashboard.html"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                    <a class="" href="be_pages_dashboard.html"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">AK</span><span class="sidebar-mini-hidden">Akademik</span></li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">TB</span><span class="sidebar-mini-hidden">Tabungan</span></li>
@@ -108,7 +108,7 @@
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KS</span><span class="sidebar-mini-hidden">Data Santri</span></li>
                 <li>
-                    <a href="#"><i class="si si-user-follow"></i><span class="sidebar-mini-hide">Tambah Santri</span></a>
+                    <a href="{{ route('tambah-santri') }}"><i class="si si-user-follow"></i><span class="sidebar-mini-hide">Tambah Santri</span></a>
                     <a href="#"><i class="si si-users"></i><span class="sidebar-mini-hide">Data Santri</span></a>
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-list-ul"></i><span class="sidebar-mini-hide">Pelanggaran</span></a>
                     <ul>

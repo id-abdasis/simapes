@@ -31,13 +31,13 @@ $(document).ready(function () {
 
     // Data alamat orang tua
     $.ajax({
-        url: 'http://127.0.0.1:8000/api/provinsi',
+        url: '/api/provinsi',
         type: 'GET',
         dataType: 'html',
         success: function (data) {
             const obj = JSON.parse(data)
             $.each(obj['semuaprovinsi'], function (key, val) {
-                $('#provinsi-ortu').append('<option value="'+ val['id'] + val['nama']+ '">'+ val['nama'] +'</option>')
+                $('#provinsi-ortu').append('<option value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
             })
 
         },
@@ -48,7 +48,7 @@ $(document).ready(function () {
     $('#provinsi-ortu').change(function () {
         let provinsi_id = $('#provinsi-ortu').val().replace(/\D/g, '')
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/kabupaten/' + provinsi_id,
+            url: '/api/kabupaten/' + provinsi_id,
             type: 'GET',
             dataType: 'html',
             success: function (data) {
@@ -62,7 +62,7 @@ $(document).ready(function () {
     $('#kabupaten-ortu').change(function () {
         let kabupaten_id = $('#kabupaten-ortu').val().replace(/\D/g, '')
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/kecamatan/' + kabupaten_id,
+            url: '/api/kecamatan/' + kabupaten_id,
             type: 'GET',
             dataType: 'html',
             success: function (data) {
@@ -77,7 +77,7 @@ $(document).ready(function () {
     $('#kecamatan-ortu').change(function () {
         let kecamatan_id = $('#kecamatan-ortu').val().replace(/\D/g, '')
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/kelurahan/' + kecamatan_id,
+            url: '/api/kelurahan/' + kecamatan_id,
             type: 'GET',
             dataType: 'html',
             success: function (data) {
@@ -87,7 +87,7 @@ $(document).ready(function () {
 
         })
     })
-    
+
 
     // Data alamat wali
 
@@ -118,10 +118,8 @@ $(document).ready(function () {
             $('#kelurahan-wali').prop('disabled', false)
         }
     })
-
-
     $.ajax({
-        url: 'http://127.0.0.1:8000/api/provinsi',
+        url: '/api/provinsi',
         type: 'GET',
         dataType: 'html',
         success: function (data) {
@@ -138,7 +136,7 @@ $(document).ready(function () {
     $('#provinsi-wali').change(function () {
         let provinsi_id = $('#provinsi-wali').val().replace(/\D/g, '')
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/kabupaten/' + provinsi_id,
+            url: '/api/kabupaten/' + provinsi_id,
             type: 'GET',
             dataType: 'html',
             success: function (data) {
@@ -152,7 +150,7 @@ $(document).ready(function () {
     $('#kabupaten-wali').change(function () {
         let kabupaten_id = $('#kabupaten-wali').val().replace(/\D/g, '')
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/kecamatan/' + kabupaten_id,
+            url: '/api/kecamatan/' + kabupaten_id,
             type: 'GET',
             dataType: 'html',
             success: function (data) {
@@ -167,7 +165,7 @@ $(document).ready(function () {
     $('#kecamatan-wali').change(function () {
         let kecamatan_id = $('#kecamatan-wali').val().replace(/\D/g, '')
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/kelurahan/' + kecamatan_id,
+            url: '/api/kelurahan/' + kecamatan_id,
             type: 'GET',
             dataType: 'html',
             success: function (data) {
@@ -181,4 +179,4 @@ $(document).ready(function () {
 })
 
 
-    
+

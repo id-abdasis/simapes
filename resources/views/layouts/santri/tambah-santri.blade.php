@@ -12,7 +12,7 @@
 @section('main-content')
     <h2 class="content-heading">Tambah Santri</h2>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 col-sm-12">
             <div class="block" id="js-wizard-validation-classic ">
                 <ul class="nav nav-tabs nav-tabs-block nav-fill" role="tablist">
                     <li class="nav-item">
@@ -615,7 +615,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12">
             <div class="block">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Bantuan</h3>

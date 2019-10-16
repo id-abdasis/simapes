@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/provinsi', 'LokasiController@provinsi');
-Route::get('/kabupaten/{id}', 'LokasiController@kabupaten');
-Route::get('/kecamatan/{id}', 'LokasiController@kecamatan');
-Route::get('/kelurahan/{id}', 'LokasiController@kelurahan');
+Route::get('/provinsi', 'LokasiController@provinsi')->name('provinsi');
+Route::get('/kabupaten/{id}', 'LokasiController@kabupaten')->name('kabupaten');
+Route::get('/kecamatan/{id}', 'LokasiController@kecamatan')->name('kecamatan');
+Route::get('/kelurahan/{id}', 'LokasiController@kelurahan')->name('kelurahan');
