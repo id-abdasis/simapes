@@ -9,7 +9,7 @@
     <h2 class="content-heading">Tambah Santri</h2>
     <div class="row">
         <div class="col-md-8">
-            <div class="js-wizard-validation-classic block">
+            <div class="block" id="js-wizard-validation-classic ">
                 <ul class="nav nav-tabs nav-tabs-block nav-fill" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" href="#data-santri" data-toggle="tab">1. DATA SANTRI</a>
@@ -21,7 +21,8 @@
                         <a class="nav-link" href="#data-wali" data-toggle="tab">3. DATA WALI</a>
                     </li>
                 </ul>
-                <form class="js-wizard-validation-classic-form" action="#" method="post" novalidate="validate">
+                <form class="js-wizard-validation-classic-form" action="{{ route('simpan-santri') }}" method="post" novalidate="validate">
+                    @csrf
                     <div class="block-content block-content-full tab-content" style="min-height: 265px;">
                         <div class="tab-pane active" id="data-santri" role="tabpanel">
                             <div class="form-row">
@@ -374,11 +375,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="provinsi-ortu">Provinsi Orang Tua</label>
-                                        <select class="form-control" id="provinsi-ortu" name="provinsi-ortu">
+                                        <select class="form-control" id="provinsi-ortu" name="provinsi-ortu" >
                                             <option value="">Pilih Provinsi</option>
-                                            <option value="SD">SD</option>
-                                            <option value="MD">MD</option>
-                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
                                         </select>
                                     </div>
                                 </div>
@@ -388,9 +386,6 @@
                                         <label for="kabupaten-ortu">Kabupaten Orang Tua</label>
                                         <select class="form-control" id="kabupaten-ortu" name="kabupaten-ortu">
                                             <option value="">Pilih Kabupaten</option>
-                                            <option value="SD">SD</option>
-                                            <option value="MD">MD</option>
-                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
                                         </select>
                                     </div>
                                 </div>
@@ -400,9 +395,6 @@
                                         <label for="kecamatan-ortu">Kecamatan Orang Tua</label>
                                         <select class="form-control" id="kecamatan-ortu" name="kecamatan-ortu">
                                             <option value="">Pilih Kecamatan</option>
-                                            <option value="SD">SD</option>
-                                            <option value="MD">MD</option>
-                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
                                         </select>
                                     </div>
                                 </div>
@@ -413,14 +405,16 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="kelurahan-ortu">Desa Orang Tua</label>
-                                        <input type="text" class="form-control" id="kelurahan-ortu" name="kelurahan-ortu">
+                                        <select class="form-control" id="kelurahan-ortu" name="kelurahan-ortu">
+                                            <option value="">Pilih Kelurahan</option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="kelurahan-ortu">Dusun Orang Tua</label>
-                                        <input type="text" class="form-control" id="kelurahan-ortu" name="kelurahan-ortu">
+                                        <label for="dusun-ortu">Dusun Orang Tua</label>
+                                        <input type="text" class="form-control" id="dusun-ortu" name="dusun-ortu">
                                     </div>
                                 </div>
 
@@ -535,9 +529,6 @@
                                         <label for="provinsi-wali">Wali</label>
                                         <select class="form-control" id="provinsi-wali" name="provinsi-wali">
                                             <option value="">Pilih Provinsi</option>
-                                            <option value="SD">SD</option>
-                                            <option value="MD">MD</option>
-                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
                                         </select>
                                     </div>
                                 </div>
@@ -547,9 +538,6 @@
                                         <label for="kabupaten-wali">Kabupaten Wali</label>
                                         <select class="form-control" id="kabupaten-wali" name="kabupaten-wali">
                                             <option value="">Pilih Kabupaten</option>
-                                            <option value="SD">SD</option>
-                                            <option value="MD">MD</option>
-                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
                                         </select>
                                     </div>
                                 </div>
@@ -559,9 +547,6 @@
                                         <label for="kecamatan-wali">Kecamatan Wali</label>
                                         <select class="form-control" id="kecamatan-wali" name="kecamatan-wali">
                                             <option value="">Pilih Kecamatan</option>
-                                            <option value="SD">SD</option>
-                                            <option value="MD">MD</option>
-                                            <option value="Pondok Pesantren">Pondok Pesantren</option>
                                         </select>
                                     </div>
                                 </div>
@@ -655,11 +640,17 @@
 <script src="{{ url('/') }}/assets/js/pages/be_forms_wizard.min.js"></script>
 <script src="{{ url('/') }}/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <script src="{{ url('/') }}/assets/js/plugins/flatpickr/flatpickr.min.js"></script>
+<script src="{{ url('/') }}/assets/js/creative.js"></script>
 <script>
     jQuery(function(){
         Codebase.helpers('datepicker');
     });
 </script>
+
+{{-- <script src="https://api.iksgroup.co.id/apijs/lokasiapi.js"></script>
+<script>
+var render=createwidgetlokasi("provinsi","kabupaten","kecamatan","kelurahan");
+</script> --}}
 
 <script>
     jQuery(function(){

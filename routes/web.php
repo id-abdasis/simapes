@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => 'santri'], function () {
+Route::group(['prefix' => 'santri', 'middleware' => 'cors'], function () {
     Route::get('/tambah-santri', 'SantriController@tambah_santri')->name('tambah-santri');
+    Route::post('/tambah-santri', 'SantriController@simpan_santri')->name('simpan-santri');
 });

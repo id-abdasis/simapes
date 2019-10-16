@@ -10,4 +10,9 @@ class SantriController extends Controller
     {
         return view('layouts.santri.tambah-santri');
     }
+
+    public function simpan_santri(Request $request)
+    {
+        return $request->all();
+    }
 }

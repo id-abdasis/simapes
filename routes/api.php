@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/provinsi', 'LokasiController@provinsi');
+Route::get('/kabupaten/{id}', 'LokasiController@kabupaten');
+Route::get('/kecamatan/{id}', 'LokasiController@kecamatan');
+Route::get('/kelurahan/{id}', 'LokasiController@kelurahan');
