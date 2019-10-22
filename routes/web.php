@@ -19,4 +19,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'santri', 'middleware' => 'cors'], function () {
     Route::get('/tambah-santri', 'SantriController@tambah_santri')->name('tambah-santri');
     Route::post('/tambah-santri', 'SantriController@simpan_santri')->name('simpan-santri');
+    Route::get('/sunting-santri/{id}/{nama_lengkap}', 'SantriController@sunting_santri')->name('sunting-santri');
+    Route::post('/update-santri', 'SantriController@update_santri')->name('update-santri');
+    Route::get('/daftar-santri', 'SantriController@daftar_santri')->name('daftar-santri');
 });

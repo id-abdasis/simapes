@@ -35,6 +35,7 @@ class CreateSantriTable extends Migration
             $table->string('nama_sekolah_asal', 100);
             $table->string('alamat_sekolah_asal', 100);
             $table->string('tahun_masuk', 4);
+            $table->string('foto_profil', 255)->nullable()->default('text');
             $table->timestamps();
         });
     }

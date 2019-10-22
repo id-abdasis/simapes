@@ -293,7 +293,7 @@
                         <h5>DATA AYAH</h5>
                         <div class="form-group">
                             <label for="nama-ayah">Nama Ayah</label>
-                            <input value="{{ old('nama_ayah') }}" type="text" class="form-control" id="nama-ayah"
+                            <input value="{{ old('nama_ayah') }}" type="text" maxleng class="isMaxLength form-control" id="nama-ayah"
                                 name="nama_ayah" required placeholder="Masukan Nama Ayah">
                             @foreach ($errors->get('nama_ayah') as $message)
                                <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>

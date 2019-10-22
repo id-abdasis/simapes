@@ -33,6 +33,13 @@ class SantriController extends Controller
         $rules = [
             'nama_lengkap_santri'   => 'required',
             'alamat_santri'         => 'required',
+            'tempat_lahir_santri'   => 'required',
+            'tanggal_lahir_santri'  => 'required',
+            'alamat_santri'         => 'required',
+            'anak_ke'               => 'required',
+            'jumlah_saudara'        => 'required',
+            'tinggal_bersama'       => 'required',
+            'asal_sekolah'          => 'required',
         ];
 
         $messages = [
@@ -138,6 +145,23 @@ class SantriController extends Controller
             return redirect('/santri/tambah-santri');
 
         }
+
+    }
+
+    public function sunting_santri($id,  $nama_lengkap)
+    {
+        $santri = Santri::find($id);
+        return view('layouts.santri.sunting-santri', ['santri' => $santri]);
+    }
+
+    public function daftar_santri()
+    {
+        $santris = Santri::all();
+        return view('layouts.santri.daftar-santri', ['santris' => $santris]);
+    }
+
+    public function update_santri(Request $request)
+    {
 
     }
 }

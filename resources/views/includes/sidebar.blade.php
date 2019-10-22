@@ -109,7 +109,7 @@
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KS</span><span class="sidebar-mini-hidden">Data Santri</span></li>
                 <li>
                     <a href="{{ route('tambah-santri') }}"><i class="si si-user-follow"></i><span class="sidebar-mini-hide">Tambah Santri</span></a>
-                    <a href="#"><i class="si si-users"></i><span class="sidebar-mini-hide">Data Santri</span></a>
+                    <a href="{{ route('daftar-santri') }}"><i class="si si-users"></i><span class="sidebar-mini-hide">Data Santri</span></a>
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-list-ul"></i><span class="sidebar-mini-hide">Pelanggaran</span></a>
                     <ul>
                         <li>
@@ -122,7 +122,7 @@
                             <a href="be_blocks_draggable.html">Rekap Pelanggaran</a>
                         </li>
                     </ul>
-                    
+
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">PP</span><span class="sidebar-mini-hidden">Perpustakaan</span></li>
                 <li>
@@ -153,8 +153,8 @@
 
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KG</span><span class="sidebar-mini-hidden">Pertokoan</span></li>
 
-                <li class="nav-main-heading"><span class="sidebar-mini-visible">KG</span><span class="sidebar-mini-hidden">Kepegawaian</span></li>                
-                
+                <li class="nav-main-heading"><span class="sidebar-mini-visible">KG</span><span class="sidebar-mini-hidden">Kepegawaian</span></li>
+
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">PG</span><span class="sidebar-mini-hidden">Pengaturan</span></li>
             </ul>
         </div>
