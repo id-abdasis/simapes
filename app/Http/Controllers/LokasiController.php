@@ -18,9 +18,13 @@ class LokasiController extends Controller
         $api_kabupaten = 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/' . $id . '/kabupaten';
         $kabupaten = file_get_contents($api_kabupaten);
         $r_kabupaten = json_decode($kabupaten);
-        foreach ($r_kabupaten->kabupatens as $data) {
-            echo '<option value="' . $data->id . $data->nama . '">' . $data->nama . '</option>';
-        }
+        // foreach ($r_kabupaten->kabupatens as $data) {
+        //     echo '<option value="' . $data->id . $data->nama . '">' . $data->nama . '</option>';
+        // }
+        return response()->json($r_kabupaten, 200);
+
+
+
 
     }
 
@@ -30,7 +34,7 @@ class LokasiController extends Controller
         $kecamatan = file_get_contents($api_kecamatan);
         $r_kecamatan = json_decode($kecamatan);
         foreach ($r_kecamatan->kecamatans as $data) {
-            echo '<option value="' . $data->id . $data->nama . '">' . $data->nama . '</option>';
+            echo '<option  value="' . $data->id . $data->nama . '">' . $data->nama . '</option>';
         }
     }
 

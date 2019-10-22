@@ -31,8 +31,13 @@ class CreateIbusTable extends Migration
             $table->string('dusun', 100);
             $table->string('rt', 4)->nullable()->default('00');
             $table->string('rw', 4)->nullable()->default('00');
-            $table->string('nama_jalan', 100)->nullable()->default('-');            
+            $table->string('nama_jalan', 100)->nullable()->default('-');
             $table->timestamps();
+        });
+
+        Schema::table('ibus', function (Blueprint $table) {
+            $table->bigInteger('santri_id')->unsigned();
+            $table->foreign('santri_id')->references('id')->on('santri')->onDelete('cascade');
         });
     }
 

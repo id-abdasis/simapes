@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Symfony\Component\Console\Helper\Table;
 
 class CreateAyahsTable extends Migration
 {
@@ -33,6 +34,11 @@ class CreateAyahsTable extends Migration
             $table->string('rw', 4)->nullable()->default('00');
             $table->string('nama_jalan', 100)->nullable()->default('-');
             $table->timestamps();
+        });
+
+        Schema::table('ayahs', function (Blueprint $table) {
+            $table->bigInteger('santri_id')->unsigned();
+            $table->foreign('santri_id')->references('id')->on('santri')->onDelete('cascade');
         });
     }
 

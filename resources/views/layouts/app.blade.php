@@ -5,6 +5,8 @@
     </head>
     <body>
 
+        @include('sweetalert::alert')
+
         <!-- Page Container -->
         <!--
             Available classes for #page-container:
@@ -363,7 +365,7 @@
             <!-- END Sidebar -->
 
             <!-- Header -->
-            
+
             <!-- END Header -->
             @include('includes.header')
             <!-- Main Container -->

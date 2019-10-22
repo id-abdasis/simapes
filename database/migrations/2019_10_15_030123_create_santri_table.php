@@ -15,6 +15,7 @@ class CreateSantriTable extends Migration
     {
         Schema::create('santri', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('status', 100)->default('belum aktif');
             $table->string('nama_lengkap', 50);
             $table->string('nama_panggilan', 100)->nullable()->default('-');
             $table->string('tempat_lahir', 50);

@@ -34,6 +34,11 @@ class CreateWalisTable extends Migration
             $table->string('nama_jalan', 100)->nullable()->default('-');
             $table->timestamps();
         });
+
+        Schema::table('walis', function (Blueprint $table) {
+            $table->bigInteger('santri_id')->unsigned();
+            $table->foreign('santri_id')->references('id')->on('santri')->onDelete('cascade');
+        });
     }
 
     /**

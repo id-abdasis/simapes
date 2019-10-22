@@ -37,7 +37,7 @@ $(document).ready(function () {
         success: function (data) {
             const obj = JSON.parse(data)
             $.each(obj['semuaprovinsi'], function (key, val) {
-                $('#provinsi-ortu').append('<option value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
+                $('#provinsi-ortu').prepend('<option value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
             })
 
         },
@@ -46,18 +46,27 @@ $(document).ready(function () {
 
 
     $('#provinsi-ortu').change(function () {
-        let provinsi_id = $('#provinsi-ortu').val().replace(/\D/g, '')
-        $.ajax({
-            url: '/api/kabupaten/' + provinsi_id,
-            type: 'GET',
-            dataType: 'html',
-            success: function (data) {
-                $('#kabupaten-ortu').append('<option>Pilih Kabupaten</option>')
-                $('#kabupaten-ortu').html(data)
-            },
+        $('#kabupaten-ortu').empty()
+        $('#kabupaten-ortu').prepend('<option>Pilih Kabupaten</option>')
+        let provinsi_id = $(this).val().replace(/\D/g, '')
+        if (provinsi_id) {
+            $.ajax({
+                url: '/api/kabupaten/' + provinsi_id,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    const obj = JSON.parse(data)
+                    $.each(obj['kabupatens'], function (key, val) {
+                        $('#kabupaten-ortu').append('<option value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
+                    })
 
-        })
+                },
+
+            })
+        }
     })
+
+
 
     $('#kabupaten-ortu').change(function () {
         let kabupaten_id = $('#kabupaten-ortu').val().replace(/\D/g, '')
@@ -66,8 +75,9 @@ $(document).ready(function () {
             type: 'GET',
             dataType: 'html',
             success: function (data) {
-                $('#kecamatan-ortu').append('<option>Pilih kecamatan</option>')
                 $('#kecamatan-ortu').html(data)
+                $('#kecamatan-ortu').prepend('<option selected>Pilih kecamatan</option>')
+
             },
 
         })
@@ -81,8 +91,9 @@ $(document).ready(function () {
             type: 'GET',
             dataType: 'html',
             success: function (data) {
-                $('#kelurahan-ortu').append('<option>Pilih kelurahan</option>')
                 $('#kelurahan-ortu').html(data)
+                $('#kelurahan-ortu').prepend('<option selected>Pilih kelurahan</option>')
+
             },
 
         })
@@ -90,14 +101,13 @@ $(document).ready(function () {
 
 
     // Data alamat wali
-
-
     $('#kabupaten-wali').prop('disabled', true)
     $('#provinsi-wali').change(function () {
         if ($(this).val() == "") {
             $('#kabupaten-wali').prop('disabled', true)
         } else {
             $('#kabupaten-wali').prop('disabled', false)
+
         }
     })
 
@@ -125,7 +135,7 @@ $(document).ready(function () {
         success: function (data) {
             const obj = JSON.parse(data)
             $.each(obj['semuaprovinsi'], function (key, val) {
-                $('#provinsi-wali').append('<option value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
+                $('#provinsi-wali').prepend('<option value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
             })
 
         },
@@ -133,18 +143,31 @@ $(document).ready(function () {
     })
 
 
-    $('#provinsi-wali').change(function () {
-        let provinsi_id = $('#provinsi-wali').val().replace(/\D/g, '')
-        $.ajax({
-            url: '/api/kabupaten/' + provinsi_id,
-            type: 'GET',
-            dataType: 'html',
-            success: function (data) {
-                $('#kabupaten-wali').append('<option>Pilih Kabupaten</option>')
-                $('#kabupaten-wali').html(data)
-            },
 
-        })
+    $('#provinsi-wali').change(function () {
+        $('#kabupaten-wali').empty()
+        $('#kabupaten-wali').prepend('<option>Pilih Kabupaten</option>')
+        let provinsi_id = $(this).val().replace(/\D/g, '')
+        let kabupaten_asal = "Kab. Bangkalan";
+        if (provinsi_id) {
+            $.ajax({
+                url: '/api/kabupaten/' + provinsi_id,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    const obj = JSON.parse(data)
+                    $.each(obj['kabupatens'], function (key, val) {
+                        let list_kabupaten = $('#kabupaten-wali').append('<option ' + 'value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
+                        list_kabupaten
+                        // if (kabupaten_asal == val['nama']) {
+                        //     $(list_kabupaten).find('option[value="' + val['id'] + kabupaten_asal + '"]').attr("selected", "selected");
+                        // }
+                    })
+
+                },
+
+            })
+        }
     })
 
     $('#kabupaten-wali').change(function () {
@@ -154,8 +177,9 @@ $(document).ready(function () {
             type: 'GET',
             dataType: 'html',
             success: function (data) {
-                $('#kecamatan-wali').append('<option>Pilih kecamatan</option>')
                 $('#kecamatan-wali').html(data)
+                $('#kecamatan-wali').prepend('<option selected>Pilih kecamatan</option>')
+
             },
 
         })
@@ -169,12 +193,44 @@ $(document).ready(function () {
             type: 'GET',
             dataType: 'html',
             success: function (data) {
-                $('#kelurahan-wali').append('<option>Pilih kelurahan</option>')
                 $('#kelurahan-wali').html(data)
+                $('#kelurahn-wali').prepend('<option selected>Pilih Kelurahan</option>')
+
             },
 
         })
     })
+
+
+    $(document).ready(function () {
+        // Format mata uang.
+        $('.uang').mask('0.000.000.000', { reverse: true });
+    })
+
+    $(document).ready(function () {
+        // Format nomor hp
+        $('.telepon').mask('0000-0000-0000', { reverse: true });
+    })
+
+    $(document).ready(function () {
+        // Format max length
+        $('.isMax3').mask('000', { reverse: true });
+    })
+
+    $(document).ready(function () {
+        $('.isMax4').mask('0000', { reverse: true })
+    })
+
+    $('.isMaxLength').maxlength({
+        alwaysShow: true,
+        threshold: 10,
+        warningClass: "label label-success",
+        limitReachedClass: "label label-warning",
+        placement: 'bottom',
+        preText: '  ',
+        separator: ' / ',
+        postText: ' karakter.'
+    });
 
 })
 
