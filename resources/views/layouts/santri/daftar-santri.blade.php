@@ -10,7 +10,7 @@
                     <div class="font-w600">{{ $santri->nama_lengkap }}</div>
                 </div>
                 <div class="block-content block-content-full bg-body-light">
-                    <img class="img-avatar img-avatar-thumb" src="assets/media/avatars/avatar13.jpg" alt="">
+                    <img class="img-avatar img-avatar-thumb" src="{{ url('/') }}/{{ $santri->foto_profil }}" alt="">
                 </div>
                 <div class="block-content block-content-full">
                     <button type="button" class="btn btn-circle btn-alt-warning mr-5 mb-5 js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit">
@@ -26,7 +26,9 @@
             </div>
         </div>
     @endforeach
+    </div>
 
-    <div class="row"> </div>
+    <div class="row justify-content-md-center">
+        {{ $santris->links() }}
     </div>
 @endsection

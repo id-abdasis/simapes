@@ -28,11 +28,27 @@
                     <a class="nav-link" href="#data-wali" data-toggle="tab">3. DATA WALI</a>
                 </li>
             </ul>
-            <form class="js-wizard-validation-classic-form" action="{{ route('simpan-santri') }}" method="post"
+            <form class="js-wizard-validation-classic-form" enctype="multipart/form-data" action="{{ route('simpan-santri') }}" method="post"
                 novalidate="validate">
                 @csrf
                 <div class="block-content block-content-full tab-content" style="min-height: 265px;">
                     <div class="tab-pane active" id="data-santri" role="tabpanel">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-4 col-lg-4 col-xl-4 animated fadeIn">
+                                <div class="options-container fx-item-zoom-in fx-overlay-slide-down">
+                                    <img class="img-fluid options-item" id="gambar_nodin" src="#" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Upload Foto Profil</label>
+                            <div class="custom-file">
+                                <input required type="file" class="custom-file-input js-custom-file-input-enabled"
+                                    id="foto_profil" name="photo_profil" data-toggle="custom-file-input">
+                                <label class="custom-file-label" for="foto_profil">Pilih Photo Profil</label>
+                            </div>
+                            <small>Nama Foto Terpilih: </small><small class="text-success" id="file_dipilih"></small>
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="nama-lengkap-santri">Nama Lengkap</label>
@@ -40,7 +56,7 @@
                                     class="form-control isMaxLength" id="nama-lengkap-santri" name="nama_lengkap_santri"
                                     placeholder="Masukan Nama Lengkap">
                                 @foreach ($errors->get('nama_lengkap_santri') as $message)
-                                    <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
+                                <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                 @endforeach
                             </div>
                             <div class="form-group col-md-6">
@@ -49,7 +65,7 @@
                                     class="form-control isMaxLength" maxlength="50" id="nama-panggilan-santri"
                                     name="nama_panggilan_santri" placeholder=" Masukan Nama Panggilan">
                                 @foreach ($errors->get('nama_panggilan_santri') as $message)
-                                    <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
+                                <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                 @endforeach
                             </div>
                         </div>
@@ -67,14 +83,12 @@
                                 <label for="tanggal-lahir-santri">Tanggal Lahir</label>
                                 <input value="{{ old('tanggal_lahir_santri') }}" required type="text"
                                     class=" js-flatpickr form-control bg-white" id="tanggal-lahir-santri"
-                                    name="tanggal_lahir_santri" placeholder="Pilih Tanggal Lahir"
-                                    data-date-format="d-m-Y">
+                                    name="tanggal_lahir_santri" placeholder="Pilih Tanggal Lahir" data-date-format="d-m-Y">
                             </div>
 
                             <div class="form-group col-md-3">
                                 <label for="jenis-kelamin-santri">Jenis Kelamin</label>
-                                <select required class="form-control" id="jenis-kelamin-santri"
-                                    name="jenis_kelamin_santri">
+                                <select required class="form-control" id="jenis-kelamin-santri" name="jenis_kelamin_santri">
                                     <option value="">Pilih Jenis Kelamin</option>
                                     <option value="Perempuan"
                                         {{ old('jenis_kelamin_santri') == 'Perempuan' ? 'selected' : ''}}>Perempuan
@@ -94,7 +108,7 @@
                                     placeholder="Masukan Alamat Sesuai Di KTP">{{ @old('alamat_santri') }}</textarea>
                             </div>
                             @foreach ($errors->get('alamat_santri') as $message)
-                                <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
+                            <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                             @endforeach
                         </div>
 
@@ -109,8 +123,8 @@
                                 <div class="form-group">
                                     <label for="jarak-kepondok">Jarak Dari Rumah ke Nurul Amanah</label>
                                     <div class="input-group">
-                                        <input maxlength="3" value="{{ old('jarak_kepondok') }}" type="text" class="isMaxLength form-control"
-                                            id="jarak-kepondok" name="jarak_kepondok"
+                                        <input maxlength="3" value="{{ old('jarak_kepondok') }}" type="text"
+                                            class="isMaxLength form-control" id="jarak-kepondok" name="jarak_kepondok"
                                             placeholder="Jarak Tempuh ke Nurul Amanah">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
@@ -158,8 +172,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="golongan-darah-santri">Golongan Darah</label>
-                                    <select class="form-control" id="golongan-darah-santri"
-                                        name="golongan_darah_santri">
+                                    <select class="form-control" id="golongan-darah-santri" name="golongan_darah_santri">
                                         <option value="">Pilih Golongan Darah</option>
                                         <option value="A " {{ old('golongan_darah_santri') == 'A' ? 'selected' : '' }}>
                                             Golongan A</option>
@@ -176,13 +189,12 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="kewarganegaraan-santri">Kewarganegaraan</label>
-                                    <select class="form-control" id="kewarganegaraan-santri"
-                                        name="kewarganegaraan_santri">
+                                    <select class="form-control" id="kewarganegaraan-santri" name="kewarganegaraan_santri">
                                         <option value="">Pilih Kewarganegaraan</option>
-                                        <option value="WNI"
-                                            {{ old('golongan_darah_santri')  == 'WNI' ? 'selected' : '' }}>WNI</option>
-                                        <option value="WNA"
-                                            {{ old('golongan_darah_santri')  == 'WNA' ? 'selected' : '' }}>WNA</option>
+                                        <option value="WNI" {{ old('golongan_darah_santri')  == 'WNI' ? 'selected' : '' }}>
+                                            WNI</option>
+                                        <option value="WNA" {{ old('golongan_darah_santri')  == 'WNA' ? 'selected' : '' }}>
+                                            WNA</option>
                                     </select>
                                 </div>
                             </div>
@@ -194,15 +206,15 @@
                                         class="form-control isMax3 isMaxLength" placeholder="Anak ke">
                                 </div>
                                 @foreach ($errors->get('anak_ke') as $message)
-                                 <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
+                                <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                 @endforeach
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="jumlah-saudara">Jumlah Saudara</label>
-                                    <input value="{{ old('jumlah_saudara') }}" required type="text"
-                                        name="jumlah_saudara" id="jumlah-saudara" class="isMaxLength form-control isMax3"
+                                    <input value="{{ old('jumlah_saudara') }}" required type="text" name="jumlah_saudara"
+                                        id="jumlah-saudara" class="isMaxLength form-control isMax3"
                                         placeholder="Jumlah Saudara">
                                 </div>
                             </div>
@@ -219,11 +231,11 @@
                                         </option>
                                         <option value="Wali" {{ old('tinggal_besama') == 'Tua' ? 'selected' : '' }}>Wali
                                         </option>
-                                        <option value="Lainnya"
-                                            {{ old('tinggal_besama') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
+                                        <option value="Lainnya" {{ old('tinggal_besama') == 'Lainnya' ? 'selected' : '' }}>
+                                            Lainnya</option>
                                     </select>
                                     @foreach ($errors->get('tinggal_bersama') as $message)
-                                        <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
+                                    <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
                                 </div>
 
@@ -243,7 +255,7 @@
                                             Pesantren</option>
                                     </select>
                                     @foreach ($errors->get('asal_sekolah') as $message)
-                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
+                                    <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
                                 </div>
                             </div>
@@ -277,15 +289,15 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="tahun-masuk">Tahun Masuk</label>
-                                    <input value="{{ old('tahun_masuk') }}" required maxlength="4" class="form-control isMaxLength isMax4" type="text"
-                                        placeholder="Tahun Masuk" id="tahun-masuk" name="tahun_masuk">
+                                    <input value="{{ old('tahun_masuk') }}" required maxlength="4"
+                                        class="form-control isMaxLength isMax4" type="text" placeholder="Tahun Masuk"
+                                        id="tahun-masuk" name="tahun_masuk">
                                     @foreach ($errors->get('tahun_masuk') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                     {{-- Form Orang Tua --}}
@@ -293,10 +305,10 @@
                         <h5>DATA AYAH</h5>
                         <div class="form-group">
                             <label for="nama-ayah">Nama Ayah</label>
-                            <input value="{{ old('nama_ayah') }}" type="text" maxleng class="isMaxLength form-control" id="nama-ayah"
-                                name="nama_ayah" required placeholder="Masukan Nama Ayah">
+                            <input value="{{ old('nama_ayah') }}" type="text" maxleng class="isMaxLength form-control"
+                                id="nama-ayah" name="nama_ayah" required placeholder="Masukan Nama Ayah">
                             @foreach ($errors->get('nama_ayah') as $message)
-                               <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
+                            <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                             @endforeach
                         </div>
 
@@ -340,12 +352,12 @@
                                             SLTP</option>
                                         <option value="SLTA" {{ old('pendidikan_ayah') == 'SLTA' ? 'selected' : '' }}>
                                             SLTA</option>
-                                        <option value="VOKASI"
-                                            {{ old('pendidikan_ayah') == 'VOKASI' ? 'selected' : '' }}>Vokasi</option>
+                                        <option value="VOKASI" {{ old('pendidikan_ayah') == 'VOKASI' ? 'selected' : '' }}>
+                                            Vokasi</option>
                                         <option value="PT" {{ old('pendidikan_ayah') == 'PT' ? 'selected' : '' }}>PT
                                         </option>
-                                        <option value="LAINNYA"
-                                            {{ old('pendidikan_ayah') == 'LAINNYA' ? 'selected' : '' }}>Lainnya</option>
+                                        <option value="LAINNYA" {{ old('pendidikan_ayah') == 'LAINNYA' ? 'selected' : '' }}>
+                                            Lainnya</option>
                                     </select>
                                 </div>
                             </div>
@@ -371,9 +383,8 @@
                                                 Rp
                                             </span>
                                         </div>
-                                        <input value='{{ old('penghasilan_ayah') }}' type="text"
-                                            class="form-control uang" id="penghasilan-ayah " name="penghasilan_ayah"
-                                            placeholder="Penghasilan">
+                                        <input value='{{ old('penghasilan_ayah') }}' type="text" class="form-control uang"
+                                            id="penghasilan-ayah " name="penghasilan_ayah" placeholder="Penghasilan">
                                         <div class="input-group-append">
                                             <span class="input-group-text">/bulan</span>
                                         </div>
@@ -390,8 +401,7 @@
                                 <div class="form-group">
                                     <label for="telepon-ayah">No. Telepon Ayah</label>
                                     <input value="{{ old('telepon_ayah') }}" type="text" class="form-control telepon"
-                                        id="telepon-ayah" name="telepon_ayah" placeholder="Masukan Telepon Ayah"
-                                        required>
+                                        id="telepon-ayah" name="telepon_ayah" placeholder="Masukan Telepon Ayah" required>
                                     @foreach ($errors->get('telepon_ayah') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
@@ -401,9 +411,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="email-ayah">Email Ayah</label>
-                                    <input value="{{ old('email_ayah') }}" type="email" id="email-ayah"
-                                        class="form-control" name="email_ayah" placeholder="Masukan Email Ayah"
-                                        >
+                                    <input value="{{ old('email_ayah') }}" type="email" id="email-ayah" class="form-control"
+                                        name="email_ayah" placeholder="Masukan Email Ayah">
                                     @foreach ($errors->get('email_ayah') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
@@ -451,8 +460,7 @@
                                     <label for="tanggal-lahir-ibu">Tanggal Lahir Ibu</label>
                                     <input value="{{ old('tanggal_lahir_ibu') }}" required type="text"
                                         class="js-flatpickr form-control bg-white" id="tanggal-lahir-ibu"
-                                        name="tanggal_lahir_ibu" placeholder="Pilih Tanggal Lahir"
-                                        data-date-format="d-m-Y">
+                                        name="tanggal_lahir_ibu" placeholder="Pilih Tanggal Lahir" data-date-format="d-m-Y">
                                     @foreach ($errors->get('tanggal_lahir_ibu') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
@@ -474,12 +482,12 @@
                                             SLTP</option>
                                         <option value="SLTA" {{ old('pendidikan_ayah') == 'SLTA' ? 'selected' : '' }}>
                                             SLTA</option>
-                                        <option value="VOKASI"
-                                            {{ old('pendidikan_ayah') == 'VOKASI' ? 'selected' : '' }}>Vokasi</option>
+                                        <option value="VOKASI" {{ old('pendidikan_ayah') == 'VOKASI' ? 'selected' : '' }}>
+                                            Vokasi</option>
                                         <option value="PT" {{ old('pendidikan_ayah') == 'PT' ? 'selected' : '' }}>PT
                                         </option>
-                                        <option value="LAINNYA"
-                                            {{ old('pendidikan_ayah') == 'LAINNYA' ? 'selected' : '' }}>Lainnya</option>
+                                        <option value="LAINNYA" {{ old('pendidikan_ayah') == 'LAINNYA' ? 'selected' : '' }}>
+                                            Lainnya</option>
                                     </select>
                                 </div>
                             </div>
@@ -524,8 +532,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="email-ibu">Email Ibu</label>
-                                    <input value="{{ old('email_ibu') }}" type="email" id="email-ibu"
-                                        class="form-control" name="email_ibu" placeholder="Masukan Email Ibu">
+                                    <input value="{{ old('email_ibu') }}" type="email" id="email-ibu" class="form-control"
+                                        name="email_ibu" placeholder="Masukan Email Ibu">
                                 </div>
                             </div>
 
@@ -590,7 +598,7 @@
                                 <div class="form-group">
                                     <label for="dusun-ortu">Dusun Orang Tua</label>
                                     <input required type="text" class="form-control" id="dusun-ortu" name="dusun_ortu">
-                                     @foreach ($errors->get('dusun_ortu') as $message)
+                                    @foreach ($errors->get('dusun_ortu') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
                                 </div>
@@ -600,7 +608,7 @@
                                 <div class="form-group">
                                     <label for="rt-ortu">RT Orang Tua</label>
                                     <input type="text" class="form-control" id="rt-ortu" name="rt_ortu">
-                                     @foreach ($errors->get('rt_ortu') as $message)
+                                    @foreach ($errors->get('rt_ortu') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
                                 </div>
@@ -611,7 +619,7 @@
                                     <label for="rw-ortu">RW Orang Tua</label>
                                     <input type="text" class="form-control" id="rw-ortu" name="rw_ortu">
                                     @foreach ($errors->get('rw_ortu') as $message)
-                                   <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
+                                    <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
 
                                 </div>
@@ -633,8 +641,8 @@
                         <h5 class="mt-3">DATA WALI</h5>
                         <div class="form-group">
                             <label for="nama-wali">Nama Wali</label>
-                            <input value="{{ old('nama_wali') }}" type="text" class="form-control" id="nama-wali" name="nama_wali" required
-                                placeholder="Masukan Nama wali">
+                            <input value="{{ old('nama_wali') }}" type="text" class="form-control" id="nama-wali"
+                                name="nama_wali" required placeholder="Masukan Nama wali">
                             @foreach ($errors->get('nama_wali') as $message)
                             <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                             @endforeach
@@ -644,8 +652,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="tempat-lahir-wali">Tempat Lahir</label>
-                                    <input value="{{ old('tempat_lahir_wali') }} " type="text" class="form-control" id="tempat-lahir-wali"
-                                        name="tempat_lahir_wali" required placeholder="Tempat Lahir wali">
+                                    <input value="{{ old('tempat_lahir_wali') }} " type="text" class="form-control"
+                                        id="tempat-lahir-wali" name="tempat_lahir_wali" required
+                                        placeholder="Tempat Lahir wali">
                                     @foreach ($errors->get('tempat_lahir_wali') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
@@ -654,9 +663,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="tanggal-lahir-wali">Tanggal Lahir Wali</label>
-                                    <input value="{{ old('tanggal_lahir_wali') }}" required type="text" class="js-flatpickr form-control bg-white"
-                                        id="tanggal-lahir-wali" name="tanggal_lahir_wali"
-                                        placeholder="Pilih Tanggal Lahir" data-date-format="d-m-Y">
+                                    <input value="{{ old('tanggal_lahir_wali') }}" required type="text"
+                                        class="js-flatpickr form-control bg-white" id="tanggal-lahir-wali"
+                                        name="tanggal_lahir_wali" placeholder="Pilih Tanggal Lahir"
+                                        data-date-format="d-m-Y">
                                     @foreach ($errors->get('tanggal_lahir_wali') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
@@ -678,12 +688,12 @@
                                             SLTP</option>
                                         <option value="SLTA" {{ old('pendidikan_ayah') == 'SLTA' ? 'selected' : '' }}>
                                             SLTA</option>
-                                        <option value="VOKASI"
-                                            {{ old('pendidikan_ayah') == 'VOKASI' ? 'selected' : '' }}>Vokasi</option>
+                                        <option value="VOKASI" {{ old('pendidikan_ayah') == 'VOKASI' ? 'selected' : '' }}>
+                                            Vokasi</option>
                                         <option value="PT" {{ old('pendidikan_ayah') == 'PT' ? 'selected' : '' }}>PT
                                         </option>
-                                        <option value="LAINNYA"
-                                            {{ old('pendidikan_ayah') == 'LAINNYA' ? 'selected' : '' }}>Lainnya</option>
+                                        <option value="LAINNYA" {{ old('pendidikan_ayah') == 'LAINNYA' ? 'selected' : '' }}>
+                                            Lainnya</option>
                                     </select>
                                 </div>
                             </div>
@@ -691,9 +701,10 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="pekerjaan-wali">Pekerjaan Wali</label>
-                                    <input value="{{ old('pekerjaan_wali') }}" required type="text" class="form-control" id="pekerjaan-wali" name="pekerjaan_wali"
-                                        placeholder="Pekerjaan Terahir wali" required>
-                                     @foreach ($errors->get('pekerjaan_wali') as $message)
+                                    <input value="{{ old('pekerjaan_wali') }}" required type="text" class="form-control"
+                                        id="pekerjaan-wali" name="pekerjaan_wali" placeholder="Pekerjaan Terahir wali"
+                                        required>
+                                    @foreach ($errors->get('pekerjaan_wali') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
                                 </div>
@@ -708,8 +719,8 @@
                                                 Rp
                                             </span>
                                         </div>
-                                        <input value="{{ old('penghasilan_wali') }}" type="text" class="form-control" id="penghasilan_wali"
-                                            name="penghasilan_wali" placeholder="Penghasilan">
+                                        <input value="{{ old('penghasilan_wali') }}" type="text" class="form-control"
+                                            id="penghasilan_wali" name="penghasilan_wali" placeholder="Penghasilan">
                                         <div class="input-group-append">
                                             <span class="input-group-text">/bulan</span>
                                         </div>
@@ -725,16 +736,16 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="telepon-wali">No. Telepon Wali</label>
-                                    <input value="{{ old('telepon_wali') }}" type="text" class="form-control" id="telepon-wali" name="telepon_wali"
-                                        placeholder="Masukan Telepon wali">
+                                    <input value="{{ old('telepon_wali') }}" type="text" class="form-control"
+                                        id="telepon-wali" name="telepon_wali" placeholder="Masukan Telepon wali">
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="email-wali">Email Wali</label>
-                                    <input value="{{ old('email_wali') }}" type="email" id="email-wali" class="form-control" name="email_wali"
-                                        placeholder="Masukan Email wali">
+                                    <input value="{{ old('email_wali') }}" type="email" id="email-wali" class="form-control"
+                                        name="email_wali" placeholder="Masukan Email wali">
                                 </div>
                             </div>
 
@@ -797,15 +808,17 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label role="" for="kelurahan-wali">Dusun Wali</label>
-                                    <input value="{{ old('kelurahan_wali') }}" type="text" class="form-control" id="kelurahan-wali" name="kelurahan_wali">
+                                    <input value="{{ old('kelurahan_wali') }}" type="text" class="form-control"
+                                        id="kelurahan-wali" name="kelurahan_wali">
                                 </div>
                             </div>
 
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="rt-wali">RT Wali</label>
-                                    <input value="{{ old('rt_wali') }} " type="text" class="form-control" id="rt-wali" name="rt_wali">
-                                     @foreach ($errors->get('rt_wali') as $message)
+                                    <input value="{{ old('rt_wali') }} " type="text" class="form-control" id="rt-wali"
+                                        name="rt_wali">
+                                    @foreach ($errors->get('rt_wali') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
                                 </div>
@@ -814,8 +827,9 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="rw-wali">RW Wali</label>
-                                    <input value="{{ old('rw_wali') }}" type="text" class="form-control" id="rw-wali" name="rw_wali">
-                                     @foreach ($errors->get('rw_wali') as $message)
+                                    <input value="{{ old('rw_wali') }}" type="text" class="form-control" id="rw-wali"
+                                        name="rw_wali">
+                                    @foreach ($errors->get('rw_wali') as $message)
                                     <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
                                     @endforeach
                                 </div>

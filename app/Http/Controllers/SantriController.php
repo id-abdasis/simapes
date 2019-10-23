@@ -48,8 +48,16 @@ class SantriController extends Controller
             'alamat_santri.max'       => 'Maksimal 3 Karakter',
         ];
 
+
         $validator = Validator::make($requestSantri->all(), $rules, $messages);
-        // dd($requestSantri->kabupaten_ortu);
+        if ($requestSantri->hasFile('photo_profil')) {
+            $extention = $requestSantri->file('photo_profil')->getClientOriginalExtension();
+            $foto_profil = $requestSantri->file('photo_profil')->move('avatar/', $requestSantri->nama_lengkap_santri . date('dmy:s') . '_' . 'avatar' . '.'.$extention);
+        } else {
+            $foto_profil = 'avatar/avatar-default.png';
+        }
+
+
         if ($validator->fails()) {
             return redirect('/santri/tambah-santri')
                 ->withErrors($validator)
@@ -77,6 +85,7 @@ class SantriController extends Controller
                 'nama_sekolah_asal'     =>  $requestSantri->nama_sekolah,
                 'alamat_sekolah_asal'   =>  $requestSantri->alamat_sekolah,
                 'tahun_masuk'           =>  $requestSantri->tahun_masuk,
+                'foto_profil'           =>  $foto_profil,
             ]);
 
             $santri_id = Santri::all()->pluck('id')->last();
@@ -141,8 +150,8 @@ class SantriController extends Controller
                 'rw'                    =>  $requestSantri->rw_ortu,
                 'nama_jalan'            =>  $requestSantri->alamat_jalan_ortu,
             ]);
-            Alert::success('Success Title', 'Success Message');
-            return redirect('/santri/tambah-santri');
+            Alert::success('Berhasil', 'Berhasil Menambahkan Santri');
+            return redirect('/santri/daftar-santri');
 
         }
 
@@ -150,14 +159,25 @@ class SantriController extends Controller
 
     public function sunting_santri($id,  $nama_lengkap)
     {
-        $santri = Santri::find($id);
-        return view('layouts.santri.sunting-santri', ['santri' => $santri]);
+        if (Santri::find($id) > 0) {
+            $santri = Santri::find($id);
+            return view('layouts.santri.sunting-santri', ['santri' => $santri]);
+        }else {
+            $jenis_error = 'Data dengan ID ' . $id . ' Tidak di temukan';
+            return view('errors.404', ['jenis_error' => $jenis_error]);
+        }
     }
 
     public function daftar_santri()
     {
-        $santris = Santri::paginate(1);
-        return view('layouts.santri.daftar-santri', ['santris' => $santris]);
+        if (Santri::all()->count() > 0) {
+            $santris = Santri::paginate(16);
+            return view('layouts.santri.daftar-santri', ['santris' => $santris]);
+        }else{
+            $jenis_error = 'Masih Belum Ada Data';
+            return view('errors.404', ['jenis_error' => $jenis_error]);
+        }
+
     }
 
     public function update_santri(Request $request)

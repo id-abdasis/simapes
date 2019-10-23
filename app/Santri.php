@@ -28,6 +28,7 @@ class Santri extends Model
         'nama_sekolah_asal',
         'alamat_sekolah_asal',
         'tahun_masuk',
+        'foto_profil',
     ];
 
     public function ibu()

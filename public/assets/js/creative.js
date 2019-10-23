@@ -232,6 +232,25 @@ $(document).ready(function () {
         postText: ' karakter.'
     });
 
+    //upload gambar
+    function bacaGambar(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#gambar_nodin').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#foto_profil").change(function () {
+        bacaGambar(this);
+        $('#file_dipilih').append($('#foto_profil')[0].files[0].name)
+    });
+
+
 })
 
 
