@@ -159,7 +159,7 @@ class SantriController extends Controller
 
     public function sunting_santri($id,  $nama_lengkap)
     {
-        if (Santri::find($id) > 0) {
+        if (Santri::find($id)->count() > 0) {
             $santri = Santri::find($id);
             return view('layouts.santri.sunting-santri', ['santri' => $santri]);
         }else {

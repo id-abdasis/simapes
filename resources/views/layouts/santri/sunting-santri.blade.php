@@ -33,6 +33,22 @@
                 @csrf
                 <div class="block-content block-content-full tab-content" style="min-height: 265px;">
                     <div class="tab-pane active" id="data-santri" role="tabpanel">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-4 col-lg-4 col-xl-4 animated fadeIn">
+                                <div class="options-container fx-item-zoom-in fx-overlay-slide-down">
+                                    <img class="img-fluid options-item" id="gambar_nodin" src="/{{ $santri->foto_profil }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Upload Foto Profil</label>
+                            <div class="custom-file">
+                                <input required type="file" class="custom-file-input js-custom-file-input-enabled"
+                                    id="foto_profil" name="photo_profil" data-toggle="custom-file-input">
+                                <label class="custom-file-label" for="foto_profil">Pilih Photo Profil</label>
+                            </div>
+                            <small>Nama Foto Terpilih: </small><small class="text-success" id="file_dipilih"></small>
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="nama-lengkap-santri">Nama Lengkap</label>
