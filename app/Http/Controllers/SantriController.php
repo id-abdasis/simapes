@@ -156,7 +156,7 @@ class SantriController extends Controller
 
     public function daftar_santri()
     {
-        $santris = Santri::all();
+        $santris = Santri::paginate(1);
         return view('layouts.santri.daftar-santri', ['santris' => $santris]);
     }
 

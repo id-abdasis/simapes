@@ -26,5 +26,7 @@
             </div>
         </div>
     @endforeach
+
+    <div class="row"> </div>
     </div>
 @endsection
