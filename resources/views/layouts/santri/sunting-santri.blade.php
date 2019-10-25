@@ -787,6 +787,7 @@
                                     <select required class="form-control" id="kabupaten-wali" name="kabupaten_wali">
                                         <option value="">Pilih Kabupaten</option>
                                     </select>
+                                    <input type="hidden" value="{{ $santri->ayah['kabupaten'] }}" id="kabupaten-wali-awal" name="">
                                 </div>
                             </div>
 
@@ -905,6 +906,7 @@
 <script src="{{ url('/') }}/assets/js/plugins/chartjs/Chart.bundle.min.js"></script>
 <script src="{{ url('/') }}/assets/js/plugins/slick/slick.min.js"></script>
 <script src="{{ url('/') }}/assets/js/pages/be_pages_dashboard.min.js"></script>
+<script src="{{ url('/') }}/assets/js/sunscript.js"></script>
 <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
 <script>
     jQuery(function () {

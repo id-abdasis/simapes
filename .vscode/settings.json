@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "abdasism_simapes",
+            "dialect": "MySQL",
+            "name": "Abd. Asis CPanel Host",
+            "password": "*#A5iSd3V%$",
+            "port": 3306,
+            "server": "103.129.222.66\t",
+            "username": "abdasism_abdasis"
+        }
+    ]
+}

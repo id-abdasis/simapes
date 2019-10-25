@@ -903,6 +903,7 @@
 <script src="{{ url('/') }}/assets/js/plugins/slick/slick.min.js"></script>
 <script src="{{ url('/') }}/assets/js/pages/be_pages_dashboard.min.js"></script>
 <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+<script src="{{ url('/') }}/assets/js/creative.js"></script>
 <script>
     jQuery(function () {
         Codebase.helpers('datepicker');

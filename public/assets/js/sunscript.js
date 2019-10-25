@@ -49,6 +49,7 @@ $(document).ready(function () {
         $('#kabupaten-ortu').empty()
         $('#kabupaten-ortu').prepend('<option>Pilih Kabupaten</option>')
         let provinsi_id = $(this).val().replace(/\D/g, '')
+        let kabupaten_asal = $('#kabupaten-ortu-awal').val().replace(/\d/g, '')
         if (provinsi_id) {
             $.ajax({
                 url: '/api/kabupaten/' + provinsi_id,
@@ -59,6 +60,10 @@ $(document).ready(function () {
                     $.each(obj['kabupatens'], function (key, val) {
                         let list_kabupaten = $('#kabupaten-ortu').append('<option ' + 'value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
                         list_kabupaten
+                        if (kabupaten_asal == val['nama']) {
+                            alert('Sama')
+                            $(list_kabupaten).find('option[value="' + val['id'] + kabupaten_asal + '"]').attr("selected", "selected");
+                        }
                     })
 
                 },
@@ -149,6 +154,7 @@ $(document).ready(function () {
         $('#kabupaten-wali').empty()
         $('#kabupaten-wali').prepend('<option>Pilih Kabupaten</option>')
         let provinsi_id = $(this).val().replace(/\D/g, '')
+        let kabupaten_asal = $('#kabupaten-wali-awal').val().replace(/\d/g, '')
         if (provinsi_id) {
             $.ajax({
                 url: '/api/kabupaten/' + provinsi_id,
@@ -160,6 +166,9 @@ $(document).ready(function () {
                     $.each(obj['kabupatens'], function (key, val) {
                         let list_kabupaten = $('#kabupaten-wali').append('<option ' + 'value="' + val['id'] + val['nama'] + '">' + val['nama'] + '</option>')
                         list_kabupaten
+                        if (kabupaten_asal == val['nama']) {
+                            $(list_kabupaten).find('option[value="' + val['id'] + kabupaten_asal + '"]').attr("selected", "selected");
+                        }
                     })
 
                 },
