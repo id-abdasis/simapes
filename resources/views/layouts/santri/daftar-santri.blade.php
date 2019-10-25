@@ -5,7 +5,7 @@
     <h2 class="content-heading">Para Santri Nurul Amanah</h2>
     <div class="row mb-5 pb-5">
             <div class="col-md-8">
-                <a href="">
+                <a href="{{ route('tambah-santri') }}">
                     <button type="button" class="btn btn-outline-info mr-5 mb-5">
                         <i class="fa fa-plus mr-5"></i>Tambah Santri
                     </button>
