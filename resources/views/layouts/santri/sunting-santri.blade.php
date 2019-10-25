@@ -883,6 +883,7 @@
                 </ol>
             </div>
         </div>
+        <a href="{{ url()->previous() }}"><span class="btn btn-danger btn-block">Batal</span></a>
     </div>
 </div>
 @endsection

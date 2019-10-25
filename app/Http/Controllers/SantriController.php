@@ -184,4 +184,11 @@ class SantriController extends Controller
     {
 
     }
+
+    public function cari_santri(Request $requestSantri)
+    {
+        $nama_santri    = $requestSantri->nama_santri;
+        $santri = Santri::where('nama_lengkap', $nama_santri)->paginate(16);
+        return view('layouts.santri.daftar-santri', ['santris' => $santri] );
+    }
 }
