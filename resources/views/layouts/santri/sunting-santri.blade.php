@@ -575,9 +575,10 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="kabupaten-ortu">Kabupaten Orang Tua</label>
-                                    <select required class="form-control" id="kabupaten-ortu" name="kabupaten_ortu">
-                                        <option value="">Pilih Kabupaten</option>
+                                    <select required class="form-control"  id="kabupaten-ortu" name="kabupaten_ortu">
+                                        <option >Pilih Kabupaten</option>
                                     </select>
+                                    <input type="hidden" value="{{ $santri->ayah['kabupaten'] }}" id="kabupaten-ortu-awal" name="">
                                 </div>
                             </div>
 
