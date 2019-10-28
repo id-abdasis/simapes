@@ -155,6 +155,20 @@
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KG</span><span class="sidebar-mini-hidden">Kepegawaian</span></li>
 
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">PG</span><span class="sidebar-mini-hidden">Pengaturan</span></li>
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-organization"></i><span class="sidebar-mini-hide">Data User</span></a>
+                    <ul>
+                        <li>
+                            <a href="be_pages_auth_all.html">Management User</a>
+                        </li>
+                        <li>
+                            <a href="op_auth_signin.html">Tambah User</a>
+                        </li>
+                        <li>
+                            <a href="op_auth_signin2.html">Daftar User</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- END Side Navigation -->

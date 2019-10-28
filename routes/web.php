@@ -35,3 +35,8 @@ Route::group(['prefix' => 'nasabah', 'middleware' => 'guest'], function ()
     Route::get('/daftar-nasabah', 'NasabahController@daftar_nasabah')->name('daftar-nasabah');
     Route::get('/hapus-nasabah', 'NasabahController@hapus_nasabah')->name('hapus-nasabah');
 });
+
+Route::group(['prefix' => 'pegawai'], function () {
+    Route::get('/', 'PegawaiController@index')->name('index-pegawai');
+    Route::get('/tambah-pegawai' , 'PegawaiController@tambah_pegawai')->name('tambah-pegawai');
+});
