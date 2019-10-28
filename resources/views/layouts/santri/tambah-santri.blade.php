@@ -11,7 +11,6 @@
 @endsection
 
 @section('main-content')
-<div id="page-loader" class="show"></div>
 
 <h2 class="content-heading">Tambah Santri</h2>
 <div class="row animated zoomIn">
@@ -628,7 +627,7 @@
 
                         <div class="form-group">
                             <label for="alamat-jalan">Alamat Jalan</label>
-                            <textarea required class="form-control" id="alamat-jalan" name="alamat_jalan_ortu" rows="6"
+                            <textarea required class="form-control" id="alamat-jalan-ortu" name="alamat_jalan_ortu" rows="6"
                                 placeholder="Masukan Alamat Sesuai Di KTP">{{ old('alamat_jalan_ortu') }}</textarea>
                             @foreach ($errors->get('alamat_jalan_ortu') as $message)
                             <small class="text-danger"><i class="fa fa-times-circle"> </i>{{ $message }}</small>
@@ -807,9 +806,9 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label role="" for="kelurahan-wali">Dusun Wali</label>
+                                    <label role="" for="dusun-wali">Dusun Wali</label>
                                     <input value="{{ old('kelurahan_wali') }}" type="text" class="form-control"
-                                        id="kelurahan-wali" name="kelurahan_wali">
+                                        id="dusun-wali" name="kelurahan_wali">
                                 </div>
                             </div>
 
@@ -838,7 +837,7 @@
 
                         <div class="form-group">
                             <label for="alamat-jalan">Alamat Jalan</label>
-                            <textarea required class="form-control" id="alamat-jalan" name="alamat_jalan_wali" rows="6"
+                            <textarea required class="form-control" id="alamat-jalan_wali" name="alamat_jalan_wali" rows="6"
                                 placeholder="Masukan Alamat Sesuai Di KTP">{{ old('alamat_jalan_wali') }}</textarea>
                         </div>
                     </div>
@@ -908,15 +907,11 @@
     jQuery(function () {
         Codebase.helpers('datepicker');
     });
-
-
 </script>
-
 {{-- <script src="https://api.iksgroup.co.id/apijs/lokasiapi.js"></script>
 <script>
     var render = createwidgetlokasi("provinsi", "kabupaten", "kecamatan", "kelurahan");
 </script> --}}
-
 <script>
     jQuery(function () {
         Codebase.helpers('flatpickr');

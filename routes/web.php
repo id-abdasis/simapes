@@ -24,3 +24,9 @@ Route::group(['prefix' => 'santri', 'middleware' => 'guest'], function () {
     Route::get('/daftar-santri', 'SantriController@daftar_santri')->name('daftar-santri');
     Route::post('/cari-santri', 'SantriController@cari_santri')->name('cari-santri');
 });
+
+Route::group(['prefix' => 'nasabah', 'middleware' => 'guest'], function ()
+{
+    Route::get('/', 'NasabahController@index')->name('nasabah-index');
+    Route::get('/tambah-nasabah', 'NasabahController@tambah_nasabah')->name('tambah-nasabah');
+});

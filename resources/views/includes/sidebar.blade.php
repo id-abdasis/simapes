@@ -1,4 +1,3 @@
-<nav id="sidebar">
     <!-- Sidebar Content -->
     <div class="sidebar-content">
         <!-- Side Header -->
@@ -39,14 +38,14 @@
         <div class="content-side content-side-full content-side-user px-10 align-parent">
             <!-- Visible only in mini mode -->
             <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                <img class="img-avatar img-avatar32" src="{{ url('/') }}/assets/avatar/avatar-default.png" alt="">
+                <img class="img-avatar img-avatar32" src="{{ url('/') }}/avatar/avatar-default.png" alt="">
             </div>
             <!-- END Visible only in mini mode -->
 
             <!-- Visible only in normal mode -->
             <div class="sidebar-mini-hidden-b text-center">
                 <a class="img-link" href="be_pages_generic_profile.html">
-                    <img class="img-avatar" src="{{ url('/') }}/assets/media/avatars/avatar9.jpg" alt="">
+                    <img class="img-avatar" src="{{ url('/') }}/avatar/avatar-default.png" alt="">
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
@@ -77,11 +76,11 @@
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">AK</span><span class="sidebar-mini-hidden">Akademik</span></li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">TB</span><span class="sidebar-mini-hidden">Tabungan</span></li>
-                <li>
+                <li class="{{ request()->is('nasabah/*') ? 'open' : '' }}">
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-users"></i><span class="sidebar-mini-hide">Nasabah</span></a>
                     <ul>
                         <li>
-                            <a href="be_blocks.html">Tambah Nasabah</a>
+                            <a class="{{ request()->is('nasabah/tambah-nasabah') ? 'active' : '' }}" href="{{ route('tambah-nasabah') }}">Tambah Nasabah</a>
                         </li>
                         <li>
                             <a href="be_blocks_tiles.html">Daftar Nasabah</a>
@@ -108,7 +107,7 @@
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KS</span><span class="sidebar-mini-hidden">Data Santri</span></li>
                 <li>
-                    <a href="{{ route('tambah-santri') }}"><i class="si si-user-follow"></i><span class="sidebar-mini-hide">Tambah Santri</span></a>
+                    <a class="{{ route('tambah-santri') ? 'active' : '' }}" href="{{ route('tambah-santri') }}"><i class="si si-user-follow "></i><span class="sidebar-mini-hide">Tambah Santri</span></a>
                     <a href="{{ route('daftar-santri') }}"><i class="si si-users"></i><span class="sidebar-mini-hide">Data Santri</span></a>
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-list-ul"></i><span class="sidebar-mini-hide">Pelanggaran</span></a>
                     <ul>
@@ -161,4 +160,3 @@
         <!-- END Side Navigation -->
     </div>
     <!-- Sidebar Content -->
-</nav>
