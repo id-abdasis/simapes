@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('main-content')
-
     <h2 class="content-heading">Para Santri Nurul Amanah</h2>
     <div class="row mb-5 pb-5">
             <div class="col-md-8">

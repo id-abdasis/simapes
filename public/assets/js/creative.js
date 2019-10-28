@@ -222,7 +222,7 @@ $(document).ready(function () {
     $('.isMaxLength').maxlength({
         alwaysShow: true,
         threshold: 10,
-        warningClass: "label label-success",
+        warningClass: "label label-info",
         limitReachedClass: "label label-warning",
         placement: 'bottom',
         preText: '  ',

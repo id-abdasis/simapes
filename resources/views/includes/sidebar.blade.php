@@ -72,7 +72,7 @@
         <div class="content-side content-side-full">
             <ul class="nav-main">
                 <li>
-                    <a class="" href="be_pages_dashboard.html"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                    <a class="{{ request()->is('/') ? 'active' : '' }}" href="{{ route('index') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">AK</span><span class="sidebar-mini-hidden">Akademik</span></li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">TB</span><span class="sidebar-mini-hidden">Tabungan</span></li>
@@ -83,7 +83,7 @@
                             <a class="{{ request()->is('nasabah/tambah-nasabah') ? 'active' : '' }}" href="{{ route('tambah-nasabah') }}">Tambah Nasabah</a>
                         </li>
                         <li>
-                            <a href="be_blocks_tiles.html">Daftar Nasabah</a>
+                            <a href="{{ route('daftar-nasabah') }}">Daftar Nasabah</a>
                         </li>
                         <li>
                             <a href="be_blocks_draggable.html">Catatan Nasabah</a>
@@ -107,7 +107,7 @@
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KS</span><span class="sidebar-mini-hidden">Data Santri</span></li>
                 <li>
-                    <a class="{{ route('tambah-santri') ? 'active' : '' }}" href="{{ route('tambah-santri') }}"><i class="si si-user-follow "></i><span class="sidebar-mini-hide">Tambah Santri</span></a>
+                    <a class="{{ request()->is('santri/tambah-santri') ? 'active' : '' }}" href="{{ route('tambah-santri') }}"><i class="si si-user-follow "></i><span class="sidebar-mini-hide">Tambah Santri</span></a>
                     <a href="{{ route('daftar-santri') }}"><i class="si si-users"></i><span class="sidebar-mini-hide">Data Santri</span></a>
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-list-ul"></i><span class="sidebar-mini-hide">Pelanggaran</span></a>
                     <ul>

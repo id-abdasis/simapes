@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.app');
-});
+    return view('dashboard');
+})->name('index');
+
 
 
 Route::group(['prefix' => 'santri', 'middleware' => 'guest'], function () {
@@ -29,4 +30,8 @@ Route::group(['prefix' => 'nasabah', 'middleware' => 'guest'], function ()
 {
     Route::get('/', 'NasabahController@index')->name('nasabah-index');
     Route::get('/tambah-nasabah', 'NasabahController@tambah_nasabah')->name('tambah-nasabah');
+    Route::get('/sunting-nasabah', 'NasabahController@tambah_nasabah')->name('sunting-nasabah');
+    Route::post('/tambah-nasabah', 'NasabahController@create_nasabah')->name('create-nasabah');
+    Route::get('/daftar-nasabah', 'NasabahController@daftar_nasabah')->name('daftar-nasabah');
+    Route::get('/hapus-nasabah', 'NasabahController@hapus_nasabah')->name('hapus-nasabah');
 });

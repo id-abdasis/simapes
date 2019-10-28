@@ -373,7 +373,7 @@
             </div>
         </footer>
     </div>
-    <script src="{{ url('/')}}/assets/js/core/jquery.min.js"></script>p
+    <script src="{{ url('/')}}/assets/js/core/jquery.min.js"></script>
     <script src="{{ url('/') }}/assets/js/core/bootstrap.bundle.min.js"></script>
     <script src="{{ url('/') }}/assets/js/core/simplebar.min.js"></script>
     <script src="{{ url('/') }}/assets/js/core/jquery-scrollLock.min.js"></script>
@@ -382,5 +382,6 @@
     <script src="{{ url('/') }}/assets/js/core/js.cookie.min.js"></script>
     <script src="{{ url('/') }}/assets/js/codebase.app.min.js"></script>
     <script src="{{ url('/') }}/assets/js/codebase.core.min.js"></script>
+    @yield('plugin-js')
 </body>
 </html>

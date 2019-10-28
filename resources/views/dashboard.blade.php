@@ -1,6 +1,6 @@
-@extends('layouts.backend')
+@extends('layouts.app')
 
-@section('content')
+@section('main-content')
     <!-- Page Content -->
     <div class="content">
         <div class="my-50 text-center">

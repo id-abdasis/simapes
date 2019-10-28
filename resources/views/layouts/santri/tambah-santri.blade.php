@@ -13,7 +13,7 @@
 @section('main-content')
 
 <h2 class="content-heading">Tambah Santri</h2>
-<div class="row animated zoomIn">
+<div class="row animated fadeIn">
     <div class="col-md-8 col-sm-12 ">
         <div class="js-wizard-validation-classic block" id=" ">
             <ul class="nav nav-tabs nav-tabs-block nav-fill" role="tablist">
