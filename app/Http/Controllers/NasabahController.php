@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Nasabah;
 use App\Santri;
+use App\User;
 
 class NasabahController extends Controller
 {

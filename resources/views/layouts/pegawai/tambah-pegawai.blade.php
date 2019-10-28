@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{{ url('/') }}/assets/js/plugins/dropzonejs/dist/dropzone.css">
 <link rel="stylesheet" href="{{ url('/') }}/assets/js/plugins/flatpickr/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @section('main-content')
     <h2 class="content-heading">Tambah Pegawai</h2>
@@ -23,20 +24,52 @@
                 </div>
             </div>
             <div class="block-content">
-                <form action="be_forms_elements_bootstrap.php" method="post" onsubmit="return false;">
+                <form action="{{ route('store-pegawai') }}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
-                        <label for="calon-nasabah">Nama Pegawai</label>
+                        <label for="nama-pegawai">Nama Pegawai</label>
                         <input type="text" class="form-control isMaxLength" id="nama-pegawai" name="nama_pegawai" maxlength="100" placeholder="Masukan Nama Pegawai">
                         <small class="text-mutted">Nama pegawai sesuai dengan kartu Santri</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="calon-nasabah">Nama Pegawai</label>
-                        <input type="text" class="form-control isMaxLength telepon" id="nama-pegawai" name="telepon_pegawai" maxlength="15" placeholder="Masukan No. Telepon Pegawai">
+                            <label for="email-pegawai">Email Pegawai</label>
+                            <input type="email" class="form-control isMaxLength" id="email-pegawai" name="email_pegawai" maxlength="100" placeholder="Masukan Email Pegawai">
+                        </div>
+
+                    <div class="form-group">
+                        <label for="telepon-pegawai">Telepon Pegawai</label>
+                        <input type="text" class="form-control isMaxLength" id="telepon-pegawai" name="telepon_pegawai" maxlength="15" placeholder="Masukan No. Telepon Pegawai">
                         <small class="text-mutted">Nomor Telepon Kalau bisa yang tertaut dengan WhatsApp</small>
                     </div>
 
-                    .form-group
+                    <div class="form-group">
+                        <label for="alamat-pegawai">Alamat Pegawai</label>
+                        <textarea class="form-control" name="alamat_pegawai" id="alamat-pegawai" cols="30" rows="5" placeholder="Masukan Alamat Lengkap Karyawan"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jabatan">Jabatan Pegawai</label>
+                        <select class="form-control" id="jabatan   " name="jabatan">
+                            <option value="0">-- Jabatan Pegawai --</option>
+                            <option value="Pegawai e-Bank">Pegawai e-Bank</option>
+                            <option value="Pegawai e-Mart">Pegawai e-Mart</option>
+                            <option value="Pegawai Perpus">Pegawai Perpus</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tanggal-masuk">Tanggal Masuk</label>
+                        <input type="text" class="js-flatpickr form-control bg-white" id="tanggal-masuk" name="tanggal_masuk" placeholder="Pilih Tanggal Masuk" data-date-format="d-m-Y">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avatar-pegawai">Avatar Pegawai</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input js-custom-file-input-enabled" id="avatar-pegawai" name="avatar-pegawai" data-toggle="custom-file-input">
+                            <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-alt-primary mr-5 mb-5 btn-block"> <i class="fa fa-user-plus mr-5"></i> Daftarkan Sekarang</button>
                     </div>
