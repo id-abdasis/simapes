@@ -7,6 +7,8 @@ use App\Pegawai;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Alert;
+use Auth;
 
 class PegawaiController extends Controller
 {
@@ -41,6 +43,13 @@ class PegawaiController extends Controller
         $user_id = User::all()->pluck('id')->last();
         $user = User::find($user_id);
         $user->pegawai()->create($requestPegawai->all());
-        return 'Berhasil Disimpan';
+        Alert::success('Berhasil', 'Berhasil Menambahkan Pegawai');
+        return redirect('pegawai/tambah-pegawai');
+    }
+
+    public function sign_out()
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 }

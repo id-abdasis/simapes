@@ -373,6 +373,7 @@
             </div>
         </footer>
     </div>
+    @include('sweetalert::alert')
     <script src="{{ url('/')}}/assets/js/core/jquery.min.js"></script>
     <script src="{{ url('/') }}/assets/js/core/bootstrap.bundle.min.js"></script>
     <script src="{{ url('/') }}/assets/js/core/simplebar.min.js"></script>

@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 
-Route::group(['prefix' => 'santri', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'santri', 'middleware' => 'guest'], function () {
     Route::get('/tambah-santri', 'SantriController@tambah_santri')->name('tambah-santri');
     Route::post('/tambah-santri', 'SantriController@simpan_santri')->name('simpan-santri');
     Route::get('/sunting-santri/{id}/{nama_lengkap}', 'SantriController@sunting_santri')->name('sunting-santri');
@@ -26,7 +26,7 @@ Route::group(['prefix' => 'santri', 'middleware' => 'auth'], function () {
     Route::post('/cari-santri', 'SantriController@cari_santri')->name('cari-santri');
 });
 
-Route::group(['prefix' => 'nasabah', 'middleware' => 'auth'], function ()
+Route::group(['prefix' => 'nasabah', 'middleware' => 'guest'], function ()
 {
     Route::get('/', 'NasabahController@index')->name('nasabah-index');
     Route::get('/tambah-nasabah', 'NasabahController@tambah_nasabah')->name('tambah-nasabah');
@@ -38,9 +38,12 @@ Route::group(['prefix' => 'nasabah', 'middleware' => 'auth'], function ()
 
 Route::group(['prefix' => 'pegawai'], function () {
     Route::get('/', 'PegawaiController@index')->name('index-pegawai');
-    Route::get('/tambah-pegawai' , 'PegawaiController@tambah_pegawai')->name('tambah-pegawai');
+    Route::get('tambah-pegawai' , 'PegawaiController@tambah_pegawai')->name('tambah-pegawai');
     Route::post('tambah-pegawai', 'PegawaiController@store_pegawai')->name('store-pegawai');
+    Route::get('sign-out', 'PegawaiController@sign_out')->name('signout');
+
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

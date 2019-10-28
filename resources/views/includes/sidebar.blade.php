@@ -35,6 +35,7 @@
         <!-- END Side Header -->
 
         <!-- Side User -->
+        @auth
         <div class="content-side content-side-full content-side-user px-10 align-parent">
             <!-- Visible only in mini mode -->
             <div class="sidebar-mini-visible-b align-v animated fadeIn">
@@ -49,7 +50,7 @@
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
-                        <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="be_pages_generic_profile.html">Abd. Asis</a>
+                        <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="be_pages_generic_profile.html">{{ Auth::user()->name }}</a>
                     </li>
                     <li class="list-inline-item">
                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -58,14 +59,15 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-effect text-dual-primary-dark" href="op_auth_signin.html">
+                        <a class="link-effect text-dual-primary-dark" href="{{ route('signout') }}">
                             <i class="si si-logout"></i>
                         </a>
                     </li>
                 </ul>
             </div>
             <!-- END Visible only in normal mode -->
-        </div>
+        </div>   
+        @endauth
         <!-- END Side User -->
 
         <!-- Side Navigation -->
@@ -162,7 +164,7 @@
                             <a href="be_pages_auth_all.html">Management User</a>
                         </li>
                         <li>
-                            <a href="op_auth_signin.html">Tambah User</a>
+                            <a href="{{ route('tambah-pegawai') }}">Tambah User</a>
                         </li>
                         <li>
                             <a href="op_auth_signin2.html">Daftar User</a>

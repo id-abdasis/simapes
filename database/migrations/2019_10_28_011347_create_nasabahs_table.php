@@ -17,16 +17,18 @@ class CreateNasabahsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_nasabah', 100);
             $table->string('nomor_rekening', 30)->unique();
+            $table->string('email', 100)->unique();
             $table->integer('jumlah_saldo');
             $table->string('status', 20)->default('Belum Aktif');
-            $table->string('password', 255);
-            $table->rememberToken();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('nasabahs', function (Blueprint $table) {
             $table->bigInteger('santri_id')->unsigned();
             $table->foreign('santri_id')->references('id')->on('santri')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

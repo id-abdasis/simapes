@@ -45,4 +45,9 @@ class Santri extends Model
     {
         return $this->hasOne(Wali::class);
     }
+
+    public function nasabah()
+    {
+        return $this->hasOne(Nasabah::class);
+    }
 }

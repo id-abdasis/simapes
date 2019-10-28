@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pegawai::class);
     }
+
+    public function nasabah()
+    {
+        return $this->hasOne(Nasabah::class);
+    }
 }

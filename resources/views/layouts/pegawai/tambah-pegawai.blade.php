@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="{{ url('/') }}/assets/js/plugins/ion-rangeslider/css/ion.rangeSlider.css">
 <link rel="stylesheet" href="{{ url('/') }}/assets/js/plugins/dropzonejs/dist/dropzone.css">
 <link rel="stylesheet" href="{{ url('/') }}/assets/js/plugins/flatpickr/flatpickr.min.css">
+<link rel="stylesheet" href="{{ url('/') }}/assets/js/plugins/sweetalert2/sweetalert2.min.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -92,6 +93,15 @@
 <script src="{{ url('/') }}/assets/js/plugins/dropzonejs/dropzone.min.js"></script>
 <script src="{{ url('/') }}/assets/js/plugins/flatpickr/flatpickr.min.js"></script>
 <script src="{{ url('/') }}/assets/js/creative.js"></script>
+<script src="{{ url('/') }}/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="{{ url('/') }}/assets/js/plugins/es6-promise/es6-promise.auto.min.js"></script>
+<script src="{{ url('/') }}/assets/js/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Page JS Code -->
+<script src="{{ url('/') }}/assets/js/pages/be_ui_activity.min.js"></script>
+
+<!-- Page JS Helpers (BS Notify Plugin) -->
+<script>jQuery(function(){ Codebase.helpers('notify'); });</script>
 <!-- Page JS Code -->
 <script src="{{ url('/') }}/assets/js/pages/be_forms_plugins.min.js"></script>
 <script>jQuery(function(){ Codebase.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script>

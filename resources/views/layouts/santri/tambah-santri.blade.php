@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="">Upload Foto Profil</label>
                             <div class="custom-file">
-                                <input required type="file" class="custom-file-input js-custom-file-input-enabled"
+                                <input type="file" class="custom-file-input js-custom-file-input-enabled"
                                     id="foto_profil" name="photo_profil" data-toggle="custom-file-input">
                                 <label class="custom-file-label" for="foto_profil">Pilih Photo Profil</label>
                             </div>
@@ -81,7 +81,7 @@
                             <div class="form-group col-lg-3">
                                 <label for="tanggal-lahir-santri">Tanggal Lahir</label>
                                 <input value="{{ old('tanggal_lahir_santri') }}" required type="text"
-                                    class=" js-flatpickr form-control bg-white" id="tanggal-lahir-santri"
+                                    class="js-flatpickr form-control bg-white" id="tanggal-lahir-santri"
                                     name="tanggal_lahir_santri" placeholder="Pilih Tanggal Lahir" data-date-format="d-m-Y">
                             </div>
 

@@ -23,15 +23,20 @@
                 </div>
             </div>
             <div class="block-content">
-                <form action="be_forms_elements_bootstrap.php" method="post" onsubmit="return false;">
+                <form action="{{ route('tambah-nasabah') }}" method="post">
+                    @csrf
                     <div class="form-group">
                         <label for="calon-nasabah">Nama Calon Nasabah</label>
                         <select class="js-select2 form-control" id="calon_nasabah" name="nama_nasabah" style="width: 100%;" data-placeholder="Pilih Santri">
                             @foreach ($santris as $santri)
-                            <option value="{{ $santri }}">{{ $santri }}</option>
+                            <option value="{{ $santri->id }} {{ $santri->nama_lengkap }}">{{ $santri->id }} | {{ $santri->nama_lengkap }} </option>
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                            <label for="email_nasabah">Email </label>
+                            <input type="text" class="form-control isMaxLength" id="email_nasabah" name="email_nasabah" placeholder="Masukan Email yang Valid" maxlength="100">
+                        </div>
                     <div class="form-group">
                         <label for="example-nf-email">Nomor Rekening </label>
                         <input type="text" class="form-control isMaxLength" id="nomor_rekening" name="nomor_rekening" placeholder="Tempelkan Kartu" maxlength="20">
