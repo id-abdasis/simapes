@@ -29,39 +29,39 @@
                     @csrf
                     <div class="form-group">
                         <label for="nama-pegawai">Nama Pegawai</label>
-                        <input type="text" class="form-control isMaxLength" id="nama-pegawai" name="nama_pegawai" maxlength="100" placeholder="Masukan Nama Pegawai">
+                        <input type="text" value="{{ old('nama_pegawai') }}" class="form-control isMaxLength" id="nama-pegawai" name="nama_pegawai" maxlength="100" placeholder="Masukan Nama Pegawai">
                         <small class="text-mutted">Nama pegawai sesuai dengan kartu Santri</small>
                     </div>
 
                     <div class="form-group">
                             <label for="email-pegawai">Email Pegawai</label>
-                            <input type="email" class="form-control isMaxLength" id="email-pegawai" name="email_pegawai" maxlength="100" placeholder="Masukan Email Pegawai">
+                            <input type="email" value="{{ old('email_pegawai') }}" class="form-control isMaxLength" id="email-pegawai" name="email_pegawai" maxlength="100" placeholder="Masukan Email Pegawai">
                         </div>
 
                     <div class="form-group">
                         <label for="telepon-pegawai">Telepon Pegawai</label>
-                        <input type="text" class="form-control isMaxLength" id="telepon-pegawai" name="telepon_pegawai" maxlength="15" placeholder="Masukan No. Telepon Pegawai">
+                        <input type="text" value="{{ old('telepon_pegawai') }}" class="form-control isMaxLength" id="telepon-pegawai" name="telepon_pegawai" maxlength="15" placeholder="Masukan No. Telepon Pegawai">
                         <small class="text-mutted">Nomor Telepon Kalau bisa yang tertaut dengan WhatsApp</small>
                     </div>
 
                     <div class="form-group">
                         <label for="alamat-pegawai">Alamat Pegawai</label>
-                        <textarea class="form-control" name="alamat_pegawai" id="alamat-pegawai" cols="30" rows="5" placeholder="Masukan Alamat Lengkap Karyawan"></textarea>
+                        <textarea class="form-control"  name="alamat_pegawai" id="alamat-pegawai" cols="30" rows="5" placeholder="Masukan Alamat Lengkap Karyawan">{{ old('alamat_pegawai') }} </textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="jabatan">Jabatan Pegawai</label>
-                        <select class="form-control" id="jabatan   " name="jabatan">
-                            <option value="0">-- Jabatan Pegawai --</option>
-                            <option value="Pegawai e-Bank">Pegawai e-Bank</option>
-                            <option value="Pegawai e-Mart">Pegawai e-Mart</option>
-                            <option value="Pegawai Perpus">Pegawai Perpus</option>
+                        <select class="form-control" id="jabatan" required name="jabatan">
+                            <option value="">-- Jabatan Pegawai --</option>
+                            <option value="ebank">Pegawai e-Bank</option>
+                            <option value="emart">Pegawai e-Mart</option>
+                            <option value="perpus">Pegawai Perpus</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="tanggal-masuk">Tanggal Masuk</label>
-                        <input type="text" class="js-flatpickr form-control bg-white" id="tanggal-masuk" name="tanggal_masuk" placeholder="Pilih Tanggal Masuk" data-date-format="d-m-Y">
+                        <input value="{{ old('tanggal_masuk') }}" type="text" class="js-flatpickr form-control bg-white" id="tanggal-masuk" name="tanggal_masuk" placeholder="Pilih Tanggal Masuk" data-date-format="d-m-Y">
                     </div>
 
                     <div class="form-group">

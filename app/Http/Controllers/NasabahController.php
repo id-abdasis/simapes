@@ -20,7 +20,8 @@ class NasabahController extends Controller
     public function daftar_nasabah()
     {
         $nasabah = Nasabah::all();
-        return view('layouts.nasabah.daftar-nasabah', ['santris' => $nasabah]);
+        $santri = Santri::all();
+        return view('layouts.nasabah.daftar-nasabah', ['santris' => $santri, 'nasabahs' => $nasabah]);
     }
 
     public function tambah_nasabah()
@@ -33,7 +34,7 @@ class NasabahController extends Controller
     {
         User::create([
             'name' => $requestNasabah->nama_nasabah,
-            'role' => 'Nasabah',
+            'role' => 'nasabah',
             'email' => $requestNasabah->email_nasabah,
             'password' => Hash::make('rahasia'),
             'remember_token' => Str::random(60)

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Alert;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PegawaiController extends Controller
 {
@@ -24,27 +25,51 @@ class PegawaiController extends Controller
 
     public function store_pegawai(Request $requestPegawai)
     {
-        User::create([
-            'name' => $requestPegawai->nama_pegawai,
-            'role' => $requestPegawai->jabatan,
-            'email' => $requestPegawai->email_pegawai,
-            'password' => Hash::make('rahasia'),
-            'remember_token' => Str::random(60)
-        ]);
+        // dd($requestPegawai->all());
+        $messages = [
+            'email_pegawai.unique' => 'Maaf Email yang ada daftarkan sudah terdaftar',
+        ];
 
-        if ($requestPegawai->hasFile('avatar_pegawai')) {
-            $extention = $requestPegawai->file('avatar_pegawai')->getClientOriginalExtention();
-            $requestPegawai->avatar_pegawai = $requestPegawai->file('avatar_pegawai')->move('avatar/'. $requestPegawai->nama_pegawai . '_' . date(dmyhs) . '.' . $extention);
+        $rules = [
+            'email_pegawai' => 'required|unique:users,email',
+        ];
+
+        $validator = Validator::make($requestPegawai->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $error = $validator->errors();
+            if ($error->first('email_pegawai')) {
+                Alert::error('Gagal', 'e-mail sudah terdaftar');
+                return redirect('pegawai/tambah-pegawai')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
         }else{
-            $requestPegawai->request->add(['avatar_pegawai' => 'avatar/default-pegawai.png']);
+            User::create([
+                'name' => $requestPegawai->nama_pegawai,
+                'role' => $requestPegawai->jabatan,
+                'email' => $requestPegawai->email_pegawai,
+                'password' => Hash::make('rahasia'),
+                'remember_token' => Str::random(60)
+            ]);
+
+            if ($requestPegawai->hasFile('avatar_pegawai')) {
+                $extention = $requestPegawai->file('avatar_pegawai')->getClientOriginalExtention();
+                $requestPegawai->avatar_pegawai = $requestPegawai->file('avatar_pegawai')->move('avatar/'. $requestPegawai->nama_pegawai . '_' . date(dmyhs) . '.' . $extention);
+            }else{
+                $requestPegawai->request->add(['avatar_pegawai' => 'avatar/default-pegawai.png']);
+            }
+    
+    
+            $user_id = User::all()->pluck('id')->last();
+            $user = User::find($user_id);
+            $user->pegawai()->create($requestPegawai->all());
+            Alert::success('Berhasil', 'Berhasil Menambahkan Pegawai');
+            return redirect('pegawai/tambah-pegawai');
+
         }
 
-
-        $user_id = User::all()->pluck('id')->last();
-        $user = User::find($user_id);
-        $user->pegawai()->create($requestPegawai->all());
-        Alert::success('Berhasil', 'Berhasil Menambahkan Pegawai');
-        return redirect('pegawai/tambah-pegawai');
+        
     }
 
     public function sign_out()

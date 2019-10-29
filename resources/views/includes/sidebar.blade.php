@@ -97,13 +97,19 @@
                         "></i><span class="sidebar-mini-hide">Tabungan</span></a>
                     <ul>
                         <li>
-                            <a href="be_blocks_widgets_users.html">Catat Tabungan</a>
+                            <a href="{{ route('transaksi.index') }}">Data Transaksi</a>
                         </li>
                         <li>
-                            <a href="be_blocks_widgets_stats.html">Mutasi Tabungan</a>
+                            <a href="{{ route('transaksi.setor-tunai') }}">Setor Tunai</a>
                         </li>
                         <li>
-                            <a href="be_blocks_widgets_media.html">Rekap Tabungan</a>
+                            <a href="{{ route('transaksi.tarik-tunai') }}">Tarik Tunai</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('transaksi.mutasi-tabungan') }}">Mutasi Tabungan</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('transaksi.laporan-ebank') }}">Rekap Tabungan</a>
                         </li>
                     </ul>
                 </li>
