@@ -123,6 +123,10 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="nisn_nasabah">NISN Santri </label>
+                        <input type="text" class="form-control isMaxLength" id="nisn_nasabah" name="nisn_nasabah" placeholder="Masukan NISN Santri" maxlength="100">
+                    </div>
+                    <div class="form-group">
                             <label for="email_nasabah">Email </label>
                             <input type="text" class="form-control isMaxLength" id="email_nasabah" name="email_nasabah" placeholder="Masukan Email yang Valid" maxlength="100">
                         </div>

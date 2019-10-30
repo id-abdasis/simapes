@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 
-Route::group(['prefix' => 'santri', 'middleware' => ['auth', 'RoleCheck:nasabah']], function () {
+Route::group(['prefix' => 'santri', 'middleware' => ['auth', 'RoleCheck:admin']], function () {
     Route::get('/tambah-santri', 'SantriController@tambah_santri')->name('tambah-santri');
     Route::post('/tambah-santri', 'SantriController@simpan_santri')->name('simpan-santri');
     Route::get('/sunting-santri/{id}/{nama_lengkap}', 'SantriController@sunting_santri')->name('sunting-santri');
@@ -26,7 +26,7 @@ Route::group(['prefix' => 'santri', 'middleware' => ['auth', 'RoleCheck:nasabah'
     Route::post('/cari-santri', 'SantriController@cari_santri')->name('cari-santri');
 });
 
-Route::group(['prefix' => 'nasabah', 'middleware' => ['auth', 'RoleCheck:ebank']], function ()
+Route::group(['prefix' => 'nasabah', 'middleware' => ['auth', 'RoleCheck:admin']], function ()
 {
     Route::get('/', 'NasabahController@index')->name('nasabah-index');
     Route::get('/tambah-nasabah', 'NasabahController@tambah_nasabah')->name('tambah-nasabah');
@@ -40,16 +40,18 @@ Route::group(['prefix' => 'pegawai'], function () {
     Route::get('/', 'PegawaiController@index')->name('index-pegawai');
     Route::get('tambah-pegawai' , 'PegawaiController@tambah_pegawai')->name('tambah-pegawai');
     Route::post('tambah-pegawai', 'PegawaiController@store_pegawai')->name('store-pegawai');
+    Route::get('daftar-pegawai', 'PegawaiController@daftar_pegawai')->name('daftar-pegawai');
     Route::get('sign-out', 'PegawaiController@sign_out')->name('signout');
 
 });
 
-Route::group(['prefix' => 'transaksi', 'middleware' => ['auth', 'RoleCheck:ebank']], function () {
+Route::group(['prefix' => 'transaksi', 'middleware' => ['auth', 'RoleCheck:admin']], function () {
     Route::get('/', 'EbankController@index')->name('transaksi.index');
-    Route::get('setor-tunai', 'EbankController@setor_tunai')->name('transaksi.setor-tunai');
-    Route::get('tarik-tunai', 'EbankController@tarik_tunai')->name('transaksi.tarik-tunai');
-    Route::get('mutasi-tabungan', 'EbankController@mutasi_tabungan')->name('transaksi.mutasi-tabungan');
-    Route::get('laporan-ebank', 'EbankController@laporan_ebank')->name('transaksi.laporan-ebank');
+    Route::get('setor-tunai', 'SetorTunaiController@setor_tunai')->name('transaksi.setor-tunai');
+    Route::post('setor-tunai', 'SetorTunaiController@store_setor_tunai')->name('transaksi.setor-tunai');
+    Route::get('tarik-tunai', 'TarikTunaiController@tarik_tunai')->name('transaksi.tarik-tunai');
+    Route::get('mutasi-tabungan', 'MutasiTabunganController@index')->name('transaksi.mutasi-tabungan');
+    Route::get('laporan-ebank', 'MutasiTabungaControllern@laporan')->name('transaksi.laporan-ebank');
 });
 
 Auth::routes();

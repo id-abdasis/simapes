@@ -15,6 +15,11 @@ class CreateSetorTunaiTable extends Migration
     {
         Schema::create('setor_tunai', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('kode_setoran', 100);
+            $table->bigInteger('nasabah_id')->unsigned();
+            $table->bigInteger('pegawai_id')->usigned();
+            $table->string('status', 100);
+            $table->integer('jumlah_setoran');
             $table->timestamps();
         });
     }

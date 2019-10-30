@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Str;
 use Alert;
+use Illuminate\Support\Facades\Validator;
 class NasabahController extends Controller
 {
     public function index()
@@ -32,29 +33,50 @@ class NasabahController extends Controller
 
     public function create_nasabah(Request $requestNasabah)
     {
-        User::create([
-            'name' => $requestNasabah->nama_nasabah,
-            'role' => 'nasabah',
-            'email' => $requestNasabah->email_nasabah,
-            'password' => Hash::make('rahasia'),
-            'remember_token' => Str::random(60)
-        ]);
+        $rules = [
+            'email_nasabah' =>  'required|unique:users,email',
+            'nis_nasabah'   =>  'required|unique:nasabahs',
+            'nomor_rekening'   =>  'required|unique:nasabahs',
+        ];
 
-
-        $user_id = User::all()->pluck('id')->last();
-        $santri_id = preg_replace('/\D/', '', $requestNasabah->nama_nasabah);
-        $user = User::find($user_id);
-        $user->nasabah()->create([
-            'nama_nasabah'  => $requestNasabah->nama_nasabah,
-            'nomor_rekening'    => $requestNasabah->nomor_rekening,
-            'email'         => $requestNasabah->email_nasabah,
-            'jumlah_saldo'  => 0,
-            'santri_id'     => $santri_id
-        ]);
-
-        Alert::success('Berhasil', 'Nasabah Berhasil di Tambahkan');
-        return redirect('nasabah/tambah-nasabah');
+        $validator  =   Validator::make($requestNasabah->all(), $rules);
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            if ($errors->first('email_nasabah')) {
+                Alert::error('Gagal', 'Email Sudah Terdaftar');
+                return redirect()->back()->withErrors($validator)->withInput();
+            }else if ($errors->first('nis_nasabah')) {
+                Alert::error('Gagal', 'NIS Sudah Terdaftar');
+                return redirect()->back()->withErrors($validator)->withInput();
+            }else if ($errors->first('nomor_rekening')) {
+                Alert::error('Gagal', 'Nomor Rekening Sudah Terdaftar');
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+        } else{
+            User::create([
+                'name' =>   preg_replace('/\d/', '', $requestNasabah->nama_nasabah),
+                'role' => 'nasabah',
+                'email' => $requestNasabah->email_nasabah,
+                'password' => Hash::make('rahasia'),
+                'remember_token' => Str::random(60)
+            ]);
+            $user_id = User::all()->pluck('id')->last();
+            $santri_id = preg_replace('/\D/', '', $requestNasabah->nama_nasabah);
+            $user = User::find($user_id);
+            $user->nasabah()->create([
+                'nama_nasabah'  => preg_replace('/\d/', '', $requestNasabah->nama_nasabah),
+                'nis_nasabah'  => $requestNasabah->nis_nasabah,
+                'nomor_rekening'    => $requestNasabah->nomor_rekening,
+                'email'         => $requestNasabah->email_nasabah,
+                'jumlah_saldo'  => 0,
+                'santri_id'     => $santri_id
+            ]);
+            Alert::success('Berhasil', 'Nasabah Berhasil di Tambahkan');
+            return redirect('nasabah/tambah-nasabah');
+        }
 
 
     }
+
+    
 }

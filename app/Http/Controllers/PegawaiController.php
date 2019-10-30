@@ -77,4 +77,10 @@ class PegawaiController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    public function daftar_pegawai()
+    {
+        $pegawai = Pegawai::all();
+        return view('layouts.pegawai.daftar-pegawai')->with(['pegawais' => $pegawai]);
+    }
 }

@@ -167,13 +167,10 @@
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-organization"></i><span class="sidebar-mini-hide">Data User</span></a>
                     <ul>
                         <li>
-                            <a href="be_pages_auth_all.html">Management User</a>
-                        </li>
-                        <li>
                             <a href="{{ route('tambah-pegawai') }}">Tambah User</a>
                         </li>
                         <li>
-                            <a href="op_auth_signin2.html">Daftar User</a>
+                            <a href="{{ route('daftar-pegawai') }}">Daftar User</a>
                         </li>
                     </ul>
                 </li>

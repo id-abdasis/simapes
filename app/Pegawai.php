@@ -14,4 +14,9 @@ class Pegawai extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function ebank()
+    {
+        return $this->hasMany(Ebank::class);
+    }
 }
