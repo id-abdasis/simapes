@@ -86,7 +86,7 @@
                         <span class="badge badge-primary">{{ $nasabah->status }}</span>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="View Customer">
+                        <button type="button" class="btn btn-sm btn-alt-success" data-toggle="tooltip" title="View Customer">
                             <i class="fa fa-user"></i>
                         </button>
                     </td>

@@ -55,5 +55,5 @@ Route::group(['prefix' => 'transaksi', 'middleware' => ['auth', 'RoleCheck:admin
 });
 
 Auth::routes();
-
+Route::get('/installation', 'SimapesController@install')->name('insatall');
 Route::get('/home', 'HomeController@index')->name('home');
