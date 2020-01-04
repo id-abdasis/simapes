@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Str;
 use Alert;
 use Illuminate\Support\Facades\Validator;
+use Session;
 class NasabahController extends Controller
 {
     public function index()
@@ -76,6 +77,24 @@ class NasabahController extends Controller
         }
 
 
+    }
+
+    public function verifikasiNasabah(Request $request)
+    {
+        $statusNasabah = Nasabah::find($request->idNasabah);
+        try {
+            if ($statusNasabah['status'] === 'Sudah Aktif') {
+                return response()->json(['error' => 'Akun Sudah Aktif'], 500);
+            } else {
+                $nasabah = Nasabah::where('id', $request->idNasabah)
+                                ->where('status', 'Belum Aktif')
+                                ->update(['status' => $request->status]);
+                 return response()->json(['messages' => 'Nasabah Berhasil Diverifikasi'], 200);
+            }
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     

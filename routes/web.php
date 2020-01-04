@@ -34,6 +34,8 @@ Route::group(['prefix' => 'nasabah', 'middleware' => ['auth', 'RoleCheck:admin']
     Route::post('/tambah-nasabah', 'NasabahController@create_nasabah')->name('create-nasabah');
     Route::get('/daftar-nasabah', 'NasabahController@daftar_nasabah')->name('daftar-nasabah');
     Route::get('/hapus-nasabah', 'NasabahController@hapus_nasabah')->name('hapus-nasabah');
+    Route::post('verifikasi-nasabah', 'NasabahController@verifikasiNasabah')->name('nasabah.verifkasi-nasabah');
+
 });
 
 Route::group(['prefix' => 'pegawai'], function () {

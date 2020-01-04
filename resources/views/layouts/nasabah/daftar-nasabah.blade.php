@@ -13,7 +13,7 @@
                     <i class="si si-bag fa-3x text-body-bg-dark"></i>
                 </div>
                 <div class="font-size-h3 font-w600 js-count-to-enabled" data-toggle="countTo" data-speed="1000" data-to="1500">1500</div>
-                <div class="font-size-sm font-w600 text-uppercase text-muted">Sales</div>
+                <div class="font-size-sm font-w600 text-uppercase text-muted">Total Simpanan</div>
             </div>
         </a>
     </div>
@@ -23,8 +23,8 @@
                 <div class="float-left mt-10 d-none d-sm-block">
                     <i class="si si-wallet fa-3x text-body-bg-dark"></i>
                 </div>
-                <div class="font-size-h3 font-w600">$<span data-toggle="countTo" data-speed="1000" data-to="780" class="js-count-to-enabled">780</span></div>
-                <div class="font-size-sm font-w600 text-uppercase text-muted">Earnings</div>
+                <div class="font-size-h3 font-w600"><span data-toggle="countTo" data-speed="1000" data-to="780" class="js-count-to-enabled">780</span></div>
+                <div class="font-size-sm font-w600 text-uppercase text-muted">Nasabah</div>
             </div>
         </a>
     </div>
@@ -78,6 +78,7 @@
                 <?php $counter =1 ?>
                 @foreach ($nasabahs as $nasabah)
                 <tr>
+                    <input type="hidden" name="id" value="{{ $nasabah->id }}" id="id-nasabah">
                     <td class="text-center">{{ $counter++ }}</td>
                     <td class="font-w600">{{ $nasabah->nama_nasabah }}</td>
                     <td class="d-none d-sm-table-cell">{{ $nasabah->email }}</td>
@@ -89,6 +90,11 @@
                         <button type="button" class="btn btn-sm btn-alt-success" data-toggle="tooltip" title="View Customer">
                             <i class="fa fa-user"></i>
                         </button>
+                        <a href="#" id="btn-verif">
+                            <button type="button" class="btn btn-sm btn-alt-info" data-toggle="tooltip" title="Verifikasi">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
@@ -140,7 +146,7 @@
                     </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-alt-success" data-dismiss="modal">
+                    <button type="button"  class="btn btn-alt-success" data-dismiss="modal">
                         <i class="fa fa-check"></i> Simpan Sekarang
                     </button>
                 </div>
@@ -160,4 +166,60 @@
 <script src="{{ url('/') }}/assets/js/pages/be_forms_plugins.min.js"></script>
 <script>jQuery(function(){ Codebase.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script>
 <script src="{{ url('/') }}/assets/js/pages/be_tables_datatables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<script>
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+
+
+$("#btn-verif").click(function(e){
+    e.preventDefault();
+    Swal.fire({
+    title: 'Verifikasi Sekarang?',
+    text: "Apakah anda ingin verifikasi akun ini?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Verifikasi Sekarang!'
+    }).then((result) => {
+    if (result.value) {
+        let status = "Sudah Aktif"
+        let idNasabah = $('#id-nasabah').val()
+        $.ajax({
+        type:'POST',
+        url: '{{ route('nasabah.verifkasi-nasabah') }}',
+        data:{
+            'idNasabah' : idNasabah,
+            'status' : status,
+            "_token": "{{ csrf_token() }}"
+        },
+        success:function(data){
+            Swal.fire(
+                'Good job!',
+                'Akun Berhasil Diverifikasi!',
+                'success'
+            )
+        },
+        error:function (data) {
+            Swal.fire(
+                'Gagal',
+                'Akun Sudah Terverfikasi!',
+                'error'
+            )
+        }
+    });
+    }
+    })
+    
+    
+});
+
+</script>
 @endsection
