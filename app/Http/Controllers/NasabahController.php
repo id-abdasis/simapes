@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Nasabah;
 use App\Santri;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Str;
 use Alert;
@@ -92,7 +92,7 @@ class NasabahController extends Controller
                  return response()->json(['messages' => 'Nasabah Berhasil Diverifikasi'], 200);
             }
             
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             //throw $th;
         }
     }
