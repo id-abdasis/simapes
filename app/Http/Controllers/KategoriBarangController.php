@@ -64,4 +64,19 @@ class KategoriBarangController extends Controller
         $kategori = KategoriBarang::findOrFail($id);
         return view('layouts.barang.edit-kategori')->with(['kategori' => $kategori, 'kategoris' => $kategoris]);
     }
+
+    public function updateKategori(Request $request)
+    {
+        $kategori = KategoriBarang::findOrFail($request->id)
+                                    ->update([
+                                        'kode_kategori' => $request->kode_kategori,
+                                        'nama_kategori' => $request->nama_kategori,
+                                        'diskripsi_kategori'    => $request->diskripsi_kategori,
+                                    ]);
+
+        if ($kategori) {
+            Alert::success('Berhasil', 'Data berhasil diupdate');
+            return redirect()->route('pertokoan.tambah-kategori');
+        }
+    }
 }

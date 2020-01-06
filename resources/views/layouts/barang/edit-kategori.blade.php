@@ -13,7 +13,7 @@
 @endsection
 
 @section('title')
-    Tambah Kategori
+    Sunting Kategori
 @endsection
 @section('main-content')
     <h2 class="content-heading">Tambah Kategori Barang</h2>
@@ -30,6 +30,7 @@
             <div class="block-content">
                 <form action="{{ route('pertokoan.update-kategori') }}" method="post">
                     @csrf
+                    <input type="hidden" name="id" value="{{ $kategori->id }}">
                     <div class="form-group">
                         <label for="kode_kategori">Kode Kategori</label>
                         <input type="text" class="form-control" name="kode_kategori" value="{{ $kategori->kode_kategori }}{{ old('kode_kategori') }}">
@@ -71,6 +72,7 @@
                     <tbody>
                         @foreach ($kategoris as $key => $kategori)
                         <tr>
+                            
                             <td class="text-center">{{ $key+1 }}</td>
                             <td class="font-w600">{{ $kategori->kode_kategori }}</td>
                             <td class="d-none d-sm-table-cell">{{ $kategori->nama_kategori }}</td>

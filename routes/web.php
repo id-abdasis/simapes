@@ -59,7 +59,7 @@ Route::group(['prefix' => 'transaksi', 'middleware' => ['auth', 'RoleCheck:admin
 Route::group(['prefix' => 'pertokoan'], function () {
     Route::get('tambah-kategori', 'KategoriBarangController@tambahKategori')->name('pertokoan.tambah-kategori');
     Route::post('store-kategori', 'KategoriBarangController@storeKategori')->name('pertokoan.store-kategori');
-    Route::get('tambah-barang', 'BarangControlles@tambahBarang')->name('pertokoan.tambah-barang');
+    Route::get('tambah-barang', 'BarangController@tambahBarang')->name('pertokoan.tambah-barang');
     Route::get('hapus-kategori/{id}', 'KategoriBarangController@hapusKategori')->name('pertokoan.hapus-kategori');
     Route::get('edit-kategori/{id}', 'KategoriBarangController@editKategori')->name('pertokoan.edit-kategori');
     Route::post('update-kategori', 'KategoriBarangController@updateKategori')->name('pertokoan.update-kategori');
