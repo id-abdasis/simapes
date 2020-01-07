@@ -155,6 +155,12 @@
                                         <input type="text" class="form-control" id="harga_jual" name="harga_jual" placeholder="Masukan Harga Beli">
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                  <label for="tanggal_expired">Tanggal Expired</label>
+                                  <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_expired" name="tanggal_expired" placeholder="Pilih tanggal expired" data-date-format="d-m-Y">
+
+                                </div>
                             </fieldset>
                         </div>
                     </div>
