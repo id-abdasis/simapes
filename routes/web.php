@@ -56,6 +56,17 @@ Route::group(['prefix' => 'transaksi', 'middleware' => ['auth', 'RoleCheck:admin
     Route::get('laporan-ebank', 'MutasiTabungaControllern@laporan')->name('transaksi.laporan-ebank');
 });
 
+Route::group(['prefix' => 'pertokoan'], function () {
+    Route::get('tambah-kategori', 'KategoriBarangController@tambahKategori')->name('pertokoan.tambah-kategori');
+    Route::post('store-kategori', 'KategoriBarangController@storeKategori')->name('pertokoan.store-kategori');
+    Route::get('tambah-barang', 'BarangController@tambahBarang')->name('pertokoan.tambah-barang');
+    Route::get('hapus-kategori/{id}', 'KategoriBarangController@hapusKategori')->name('pertokoan.hapus-kategori');
+    Route::get('edit-kategori/{id}', 'KategoriBarangController@editKategori')->name('pertokoan.edit-kategori');
+    Route::post('update-kategori', 'KategoriBarangController@updateKategori')->name('pertokoan.update-kategori');
+
+
+});
+
 Auth::routes();
 Route::get('/installation', 'SimapesController@install')->name('insatall');
 Route::get('/home', 'HomeController@index')->name('home');

@@ -157,8 +157,13 @@
                                 </div>
 
                                 <div class="form-group">
+<<<<<<< HEAD
                                   <label for="">Tanggal Expired</label>
                                   <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_expired" name="tanggal_expired" placeholder="Pilih Tanggal Expired" data-date-format="d-m-Y">
+=======
+                                  <label for="tanggal_expired">Tanggal Expired</label>
+                                  <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_expired" name="tanggal_expired" placeholder="Pilih tanggal expired" data-date-format="d-m-Y">
+>>>>>>> barang
 
                                 </div>
                             </fieldset>

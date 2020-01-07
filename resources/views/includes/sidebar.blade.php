@@ -159,7 +159,29 @@
                 </li>
 
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KG</span><span class="sidebar-mini-hidden">Pertokoan</span></li>
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-basket-loaded                        "></i><span class="sidebar-mini-hide">Data Barang</span></a>
+                    <ul>
+                        <li>
+                            <a href="#">Tambah Barang</a>
+                        </li>
+                        <li>
+                            <a href="#">Daftar Barang</a>
+                        </li>
+                    </ul>
+                </li>
 
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-layers"></i><span class="sidebar-mini-hide">Kategori Barang</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('pertokoan.tambah-kategori') }}">Tambah Kategori</a>
+                        </li>
+                        <li>
+                            <a href="#">Daftar Kategori</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KG</span><span class="sidebar-mini-hidden">Kepegawaian</span></li>
 
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">PG</span><span class="sidebar-mini-hidden">Pengaturan</span></li>
