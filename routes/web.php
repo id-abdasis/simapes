@@ -63,6 +63,8 @@ Route::group(['prefix' => 'pertokoan'], function () {
     Route::get('hapus-kategori/{id}', 'KategoriBarangController@hapusKategori')->name('pertokoan.hapus-kategori');
     Route::get('edit-kategori/{id}', 'KategoriBarangController@editKategori')->name('pertokoan.edit-kategori');
     Route::post('update-kategori', 'KategoriBarangController@updateKategori')->name('pertokoan.update-kategori');
+    Route::post('store-barang', 'BarangController@storeBarang')->name('pertokoan.store-barang');
+
 
 
 });

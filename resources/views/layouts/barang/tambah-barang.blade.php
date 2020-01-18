@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="block-content">
-                <form action="{{ route('pertokoan.store-kategori') }}" method="post">
+                <form action="{{ route('pertokoan.store-barang') }}" method="post">
                     @csrf
                     <fieldset class="border p-15 mb-20">
                         <legend class="w-auto"><small>Identitas Barang</small></legend>
@@ -36,7 +36,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                   <label for="kode_barang">Kode Product</label>
-                                  <input type="text" name="kode_barang" id="kode_barang" class="form-control" placeholder="Scan Barcode" aria-describedby="kodebarang">
+                                  <input type="text" name="kode_product" id="kode_barang" class="form-control" placeholder="Scan Barcode" aria-describedby="kodebarang">
                                   <small id="kodebarang" class="text-muted">Silahkan scan barcode pada kemasan product</small>
                                 </div>
 
@@ -92,7 +92,7 @@
                                 <legend class="w-auto">Satuan dan Isi Product</legend>
                                 <div class="form-group">
                                 <label for="stock_pruduct">Stock</label>
-                                <input type="number" name="stock_pruduct" id="stock_pruduct" class="form-control" placeholder="Masukan stock">
+                                <input type="number" name="stock_product" id="stock_pruduct" class="form-control" placeholder="Masukan stock">
                                 </div>
 
                                 <div class="form-group">
@@ -157,25 +157,17 @@
                                 </div>
 
                                 <div class="form-group">
-<<<<<<< HEAD
                                   <label for="">Tanggal Expired</label>
                                   <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_expired" name="tanggal_expired" placeholder="Pilih Tanggal Expired" data-date-format="d-m-Y">
-=======
-                                  <label for="tanggal_expired">Tanggal Expired</label>
-                                  <input type="text" class="js-flatpickr form-control bg-white" id="tanggal_expired" name="tanggal_expired" placeholder="Pilih tanggal expired" data-date-format="d-m-Y">
->>>>>>> barang
-
                                 </div>
                             </fieldset>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <a href="#">
-                            <button type="button" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-save mr-1"></i> Simpan Barang
                             </button>   
-                        </a>
 
                         <a href="#">
                             <button class="btn btn-danger">

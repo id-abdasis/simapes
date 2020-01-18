@@ -66,7 +66,7 @@
                 </ul>
             </div>
             <!-- END Visible only in normal mode -->
-        </div>   
+        </div>
         @endauth
         <!-- END Side User -->
 
@@ -159,11 +159,12 @@
                 </li>
 
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">KG</span><span class="sidebar-mini-hidden">Pertokoan</span></li>
+
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-basket-loaded                        "></i><span class="sidebar-mini-hide">Data Barang</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{ route('pertokoan.tambah-kategori') }}"><i class="si si-basket-loaded                        "></i><span class="sidebar-mini-hide">Data Barang</span></a>
                     <ul>
                         <li>
-                            <a href="#">Tambah Barang</a>
+                            <a href="{{ route('pertokoan.tambah-barang') }}">Tambah Barang</a>
                         </li>
                         <li>
                             <a href="#">Daftar Barang</a>
@@ -179,6 +180,18 @@
                         </li>
                         <li>
                             <a href="#">Daftar Kategori</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-layers"></i><span class="sidebar-mini-hide">Supplier</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('pertokoan.tambah-kategori') }}">Tambah Supplier</a>
+                        </li>
+                        <li>
+                            <a href="#">Daftar Supplier</a>
                         </li>
                     </ul>
                 </li>
